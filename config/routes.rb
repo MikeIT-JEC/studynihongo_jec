@@ -69,9 +69,9 @@ Rails.application.routes.draw do
 
   # main
   get                  'payment-terms' => 'mains#payment_terms'
-  get                 'cebu-schedules' => 'mains#cebuschedule'
+  get           'cebu-class-schedules' => 'mains#cebuschedule'
   get             'cebu-schedules/:id' => 'mains#show_cebu'
-  get               'manila-schedules' => 'mains#manilaschedule'
+  get         'manila-class-schedules' => 'mains#manilaschedule'
   get           'manila-schedules/:id' => 'mains#show_manila'
   get            'reservation-success' => 'mains#success'
  
