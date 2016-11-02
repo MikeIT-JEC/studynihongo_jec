@@ -1,0 +1,2 @@
+module ManilaschedsHelper
+end

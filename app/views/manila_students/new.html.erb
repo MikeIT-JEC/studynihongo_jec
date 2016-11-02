@@ -1,0 +1,96 @@
+<% provide(:title, @manilasched.ms_day+" |") %>
+<%= render "layouts/navbar_user" %>
+<div class="section">
+	<div class="container">
+		<h6 class="grey-text"> Manila Schedules > <%= @showmanilasched.duration %> > <%= @manilasched.ms_day %> </h6>
+		<div class="row">
+			<div class="col s12 m4">
+				<div class="card orange white-text">
+					<div class="card-content">
+						<h5 class="header"><%= @manilasched.ms_day%></h5>
+						<div class="divider"></div><br>
+						<p>
+							<small>Slots:</small> <%= @manilasched.ms_slots %> <br>
+				          	<small>Session:</small> <%= @manilasched.ms_session %> <br>
+				          	<small>Time:</small> <%= @manilasched.ms_time %> <br>
+				          	<small>JLPT Level:</small> <%= @manilasched.ms_jlpt_level %> <br>
+				          	<small>Class Starts:</small> <%= @manilasched.ms_starts %> <br>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m8">
+				<div class="card">
+					<div class="card-content">
+						<h5 class="blue-text center">Please provide your information here</h5>
+						
+						<%= render "partials/notification" %>
+						
+						<%= form_for @manilastudent do |f| %>
+
+							<!-- hidden fields -->
+							<%= f.hidden_field(:manila_sched_id, value: @manilasched.id)%> 
+							<%= f.hidden_field(:status, value: "0")%>
+							<%= f.hidden_field(:datereserved, value: Time.now )%>
+							<%= f.hidden_field(:dateexpired, value: 3.days.from_now)%>
+							<!-- hidden fields -->
+ 
+							<div class="row">
+								<div class="input-field col s12 m4">
+									<%= f.label(:firstname, "Firstname")%>
+									<%= f.text_field(:firstname, required: true) %>
+								</div>
+								<div class="input-field col s12 m4">
+									<%= f.label(:middlename, "Middlename")%>
+									<%= f.text_field(:middlename) %>
+								</div>
+								<div class="input-field col s12 m4">
+									<%= f.label(:lastname, "Lastname")%>
+									<%= f.text_field(:lastname, required: true) %>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12 m4">
+									<%= f.label(:age, "Age")%>
+									<%= f.text_field(:age, required: true) %>
+								</div>
+								<div class="input-field col s12 m4">
+									<%= f.label(:contactnumber, "Contact Number")%>
+									<%= f.text_field(:contactnumber, required: true) %>
+								</div>
+								<div class="input-field col s12 m4">
+									<%= f.label(:emailaddress, "Email Address")%>
+									<%= f.email_field(:emailaddress, required: true) %>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12">
+									<%= f.label(:address, "Address")%>
+									<%= f.text_field(:address, required: true) %>
+								</div> 
+							</div>
+							<div class="center">
+								<p class="center">Payment method</p>
+								<%= f.radio_button :payment_scheme, "Counter", :checked => true %>
+								<%= f.label :payment_scheme_counter, "Over the Counter" %> 
+								<%= f.radio_button :payment_scheme, "Bank" %>
+								<%= f.label :payment_scheme_bank, "Through the Bank" %> 
+							</div>	
+							<br><div class="divider"></div><br> 
+							<div class="row">
+								<div class="col s12 m8">
+									<%=  check_box_tag 'agreed', 'yes', 'true' %>
+									<%= f.label "By clicking done, you accept the payment terms of the method that you choosed." %>	
+								</div>
+								<div class="col s12 m4 right">
+									<%= f.submit("Done",data: { confirm: "Please recheck the information you have given before hitting the 'OK' button."}, class: "waves-effect btn blue", id: "submit")%> 
+								</div>
+							</div> 
+						<% end %>
+					</div>
+				</div>		
+			</div>
+		</div>
+	</div>
+</div> 
+<%= render "layouts/footer_user" %>

@@ -1,0 +1,24 @@
+<% provide(:title, "Inquiries") %>
+<%= render "layouts/navbar_admin" %>
+<div class="container"> 
+	<h4 class="blue-text center"><%= material_icon.textsms%> INQUIRIES</h4>
+		<% if @inquiries.count == 0 %>
+			<h3 class="center red-text">Don't have any inquiries yet!</h3>
+		<% else %>
+			<% @inquiries.each do |inq| %>
+			 	<ul class="collapsible popout" data-collapsible="accordion">
+				    <li class="blue lighten-1 blue-text">
+				      <div class="collapsible-header"><%= material_icon.account_circle%><%= inq.name %> 
+				      </div>
+				      <div class="collapsible-body white-text"> 
+				      	<p>	Email: <%= inq.email %><br>
+				      		Contactnumber: <%= inq.contactnumber %> <br>
+				      		... <br>
+				      		<%= inq.inquiry %>
+				    	</p>
+				      	</div>
+				    </li> 
+			  	</ul>
+			<% end %>
+		<% end %>
+</div>

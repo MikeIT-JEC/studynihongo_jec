@@ -1,0 +1,13 @@
+<% provide(:title, @article.title + " |")%>
+<%= render "layouts/navbar_admin" %> 
+<div class="container"> 
+	<h4 class="center"><%= @article.title %></h4> 
+	<div class="divider"></div>
+
+	<%= raw @article.body %> 
+
+	<div class="center">
+		<%= link_to 'Edit',{controller: "articles", action: "edit", id: @article.slug }%> |
+		<%= link_to 'Back', admin_articles_path %>
+	</div> 
+</div>

@@ -1,0 +1,20 @@
+
+<div class="navbar-fixed"> 
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"> 
+      <%= link_to image_tag("nihongo class.png", :alt => "Study Nihongo", :class => "img-responsive"), root_path, id: "logo-container", class: "brand-logo"%>
+
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Sensei</a></li>
+        <li><%= link_to "Articles", articles_path%></li>
+        <li><%= link_to "Payment Terms", payment_terms_path %></li>
+        <li><a href="#inquiry">Inquiry</a></li>   
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>  
+</div>

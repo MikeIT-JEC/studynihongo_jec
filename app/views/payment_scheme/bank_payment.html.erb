@@ -1,0 +1,271 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>Nihongo Class Reservation</title>
+      <style type="text/css">
+      body {
+       padding-top: 0 !important;
+       padding-bottom: 0 !important;
+       padding-top: 0 !important;
+       padding-bottom: 0 !important;
+       margin:0 !important;
+       width: 100% !important;
+       -webkit-text-size-adjust: 100% !important;
+       -ms-text-size-adjust: 100% !important;
+       -webkit-font-smoothing: antialiased !important;
+     }
+     .tableContent img {
+       border: 0 !important;
+       display: block !important;
+       outline: none !important;
+     }
+     a{
+      color:#382F2E;
+    }
+
+    p, h1{
+      color:#382F2E;
+      margin:0;
+    }
+ p{
+      text-align:left;
+      color:#999999;
+      font-size:14px;
+      font-weight:normal;
+      line-height:19px;
+    }
+
+    a.link1{
+      color:#382F2E;
+    }
+    a.link2{
+      font-size:16px;
+      text-decoration:none;
+      color:#ffffff;
+    }
+
+    h2{
+      text-align:left;
+       color:#222222; 
+       font-size:19px;
+      font-weight:normal;
+    }
+    div,p,ul,h1{
+      margin:0;
+    }
+
+    .bgBody{
+      background: #ffffff;
+    }
+    .bgItem{
+      background: #ffffff;
+    }
+
+    </style>
+<script type="colorScheme" class="swatch active">
+{
+    "name":"Default",
+    "bgBody":"ffffff",
+    "link":"382F2E",
+    "color":"999999",
+    "bgItem":"ffffff",
+    "title":"222222"
+}
+</script>
+  </head>
+  <body paddingwidth="0" paddingheight="0"   style="padding-top: 0; padding-bottom: 0; padding-top: 0; padding-bottom: 0; background-repeat: repeat; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-font-smoothing: antialiased;" offset="0" toppadding="0" leftpadding="0">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableContent bgBody" align="center"  style='font-family:Helvetica, Arial,serif;'>
+
+      
+      <tr><td height='10'></td></tr>
+
+      <tr>
+        <td>
+          <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" class='bgItem'>
+            <tr>
+              <td width='40'></td>
+              <td width='520'>
+                <table width="520" border="0" cellspacing="0" cellpadding="0" align="center">
+
+<!-- =============================== Header ====================================== -->           
+                  
+
+                  <tr><td height='15'></td></tr>
+<!-- =============================== Body ====================================== -->
+
+                  <tr>
+                    <td class='movableContentContainer' valign='top'>
+                      <table align='center'>
+                        <tr>
+                          <td align='center'>
+                          	<%= image_tag(attachments['email_images/header.png'].url, width: 300, height: 100, data_max_width: 560, data_default: "placeholder")%> 
+                          </td>
+                        </tr>
+                      </table>
+                      <div lass='movableContent'>
+                        <table width="520" border="0" cellspacing="0" cellpadding="0" align="center">
+                          <tr>
+                            <td valign='top' align='center'>
+                              <div class="contentEditableContainer contentTextEditable">
+                                <div class="contentEditable">
+                                  <p style='text-align:center;margin:0;font-family:Georgia,Time,sans-serif;font-size:26px;color:#289CDC;'>Nihongo Class Reservation</p>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+
+                      <div lass='movableContent'>
+                        <table width="520" border="0" cellspacing="0" cellpadding="0" align="center">
+                          <tr>
+                            <td valign='top' align='center'>
+                              <div class="contentEditableContainer contentImageEditable">
+                                <div class="contentEditable">
+	                              <%= image_tag(attachments['email_images/line.png'].url, width: 251, height: 43, data_max_width: 560, data_default: "placeholder")%> 
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+
+                      <div class='movableContent'>
+                        <table width="520" border="0" cellspacing="0" cellpadding="0" align="center">
+                          <tr><td height='55'></td></tr>
+                          <tr>
+                            <td align='left'>
+                              <div class="contentEditableContainer contentTextEditable">
+                                <div class="contentEditable" align='center'>
+                                  <h2>Konnichiwa <%= @user.firstname %>-san,</h2>
+                                  <p>This reservation will expire on: <span style="color: red"><%= @user.dateexpired.strftime("%B %d, %Y") %></span></p>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+
+                          <tr><td height='35'> </td></tr>
+
+                          <tr>
+                            <td align='left'>
+                              <div class="contentEditableContainer contentTextEditable">
+                                <div class="contentEditable" align='center'>
+                                  <p  style='text-align:left;color:#000;font-size:14px;font-weight:normal;line-height:19px;'>
+                                    Since you have chosen the <strong>Bank Deposit</strong> option, here is our <strong>Metrobank</strong> account: <br>
+                                    <br>
+                                      Bank: <strong>Metrobank</strong> <br>
+                                      Bank Name: <strong>Jellyfish Education Consultancy Phils. Inc</strong> <br>
+                                      Bank Account number: <strong>216-7-216516270</strong> <br>
+                                      Branch Name: <strong>Cebu-Mango Branch</strong> <br>
+                                      Branch Address: <strong>General Maxilom Avenue, 6000 Cebu City</strong> <br>
+                                      Swift Code: <strong>MBTCPHMM</strong>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    Please follow these simple steps for confirmation:<br><br>
+                                    <strong>STEP 1:</strong> Proceed to the preferred Metrobank branch and deposit at least <strong>Php 1,000.00</strong> for the <strong>Reservation Fee</strong>. If you wish to pay your tuition fee in full, please deposit <strong>Php 7,000.00</strong>.<br>
+                                              *If you have <strong>MBTC e-banking account</strong>, you can just transfer payments to the above account number.<br><br>
+                                    <strong>STEP 2:</strong> Take a photo of the deposit slip or have it scanned and send it to <strong>nihongoclass.jec@jellyfisheducation.com.ph</strong>. <br><br>
+                                    <strong>STEP 3:</strong> We will send a verification response through email and for further notice.
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    Arigatou gozaimasu (Thank you),
+                                    <br>
+                                    <span style='color:#222222;'><strong>Jellyfish Education Consultancy - Nihongo Class</strong></span>
+                                  </p>
+                                </div>
+                              </div>
+                            </td>
+                          </tr> 
+                        </table>
+                      </div>
+
+                      <div lass='movableContent'>
+                        <table width="520" border="0" cellspacing="0" cellpadding="0" align="center">
+                          <tr><td height='65'></td></tr>
+                          <tr><td  style='border-bottom:1px solid #DDDDDD;'></td></tr>
+
+                          <tr><td height='25'></td></tr>
+
+                          <tr>
+                            <td>
+                              <table width="520" border="0" cellspacing="0" cellpadding="0" align="center">
+                                <tr>
+                                  <td valign='top' align='left' width='370'>
+                                    <div class="contentEditableContainer contentTextEditable">
+                                      <div class="contentEditable" align='center'>
+                                        <p  style='text-align:left;color:#999;font-size:15px;font-weight:normal;line-height:20px;'>
+                                          <span style='font-weight:bold;'>Jellyfish Education Consultancy Branches</span>
+                                          <br> 
+                                          <br>
+                                          <span style='font-weight:bold;'>Manila Office:</span><br>
+                                          <small>Unit 902A Philippine Stock Exchange Center 
+											East Tower Exchange Road, Ortigas Center, 
+											Pasig City 1605 <br>
+                                           <strong>(02) 570-1290 / (+63) 905-666-4028 </strong>
+                                           </small>
+                                          <br>
+                                          <br>
+                                          <span style='font-weight:bold;'>Cebu Office:</span><br>
+                                          <small>Unit 802A, Keppel Building, Samar Loop corner Cardinal Rosales,Cebu Business Park, Cebu City <br>
+                                           <strong>(032)231-4434 / (+63) 942-015-0528</strong>
+                                           </small>
+                                          <br> 
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </td>
+
+                                  <td width='30'></td>
+
+                                  <td valign='top' width='52'>
+                                    <div class="contentEditableContainer contentFacebookEditable">
+                                      <div class="contentEditable">
+                                      	<%= link_to image_tag(attachments['email_images/facebook.png'].url, width: 52, height: 53, data_max_width: 52, data_default: "placeholder", data_customIcon: true), "https://www.facebook.com/JECNihongoClass" %>  
+                                      </div>
+                                    </div>
+                                  </td> 
+
+                                  <td width='16'></td>
+
+                                  <td valign='top' width='52'>
+                                    <div class="contentEditableContainer contentTwitterEditable">
+                                      <div class="contentEditable">
+                                      	<%= link_to image_tag(attachments['email_images/web.png'].url, width: 52, height: 53, data_max_width: 52, data_default: "placeholder", data_customIcon: true), "http://www.jellyfisheducation.com.ph/" %>   
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+
+                    </td>
+                  </tr>
+
+                  
+
+<!-- =============================== footer ====================================== -->
+                  
+
+
+                </table>
+              </td>
+              <td width='40'></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr><td height='88'></td></tr>
+
+
+    </table>
+    
+      </body>
+      </html>

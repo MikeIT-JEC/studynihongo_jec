@@ -1,0 +1,72 @@
+<%= render "layouts/navbar_admin" %> 
+<div class="container"> 
+	<div class="section">    
+
+    	<%= form_for @getsubsched, url:{action: "update"}, html: {class: "form"} do |sub_sched| %>  
+	      	<div class="row">
+	      		<div class="col s1"></div>
+	      		<div class="col s10"> 
+	      		
+					<%= render "partials/notification" %>
+
+    				<h4 class="center">Add Sub Schedule for <br><span class="blue-text"><%= @getsubsched.ms_day.upcase %></span></h4> 
+
+				      <div class="row">
+				        <div class="input-field col s6"> 
+				          <%= sub_sched.hidden_field :manila_sched_id, :value => @getsubsched.manila_sched_id, :class => "center" %>  
+				        </div>
+				        <div class="input-field col s6">
+				          <%= sub_sched.hidden_field :admin_id, :value => current_user.id %>  
+				        </div>
+				      </div> 
+				      <div class="row">
+				        <div class="input-field col s3">
+				          <%= sub_sched.label  :ms_slots, "Slots"%>
+				          <%= sub_sched.text_field  :ms_slots, :class => "center"  %> 
+				        </div>
+				        <div class="input-field col s6">
+				          <%= sub_sched.label  :ms_day, "Days"%>
+				          <%= sub_sched.text_field  :ms_day, :class => "center"  %> 
+				        </div>
+				        <div class="input-field col s3">
+				          <%= sub_sched.label  :ms_session, "Session"%>
+				          <%= sub_sched.text_field  :ms_session, :class => "center"  %> 
+				        </div>
+				      </div>   
+				      <div class="row">
+				        <div class="input-field col s4">
+				          <%= sub_sched.label  :ms_time, "Time"%>
+				          <%= sub_sched.text_field  :ms_time, :class => "center"  %> 
+				        </div>
+				        <div class="input-field col s4">
+				          <%= sub_sched.label  :ms_starts, "Class Starts"%>
+				          <%= sub_sched.text_field  :ms_starts, :class => "center"  %> 
+				        </div>
+				        <div class="input-field col s4">
+				          <%= sub_sched.label  :ms_jlpt_level, "JLPT Level"%>
+				          <%= sub_sched.text_field :ms_jlpt_level, :class => "center"  %> 
+				        </div>
+				      </div>  
+				      <div class="center">   
+				          <%= sub_sched.label  :ms_status, "Status"%>
+						    <%= sub_sched.radio_button(:ms_status, "0", :checked => true) %>
+							<%= sub_sched.label(:ms_status_0, "Deactivate") %>
+							<%= sub_sched.radio_button(:ms_status, "1") %>
+							<%= sub_sched.label(:ms_status_1, "Activate") %>  
+		              </div> 
+	      			</div>   
+	      		<div class="col s1"></div> 
+	      	</div>  <br>
+	      	<div class="center-align">
+	      		<%= sub_sched.submit "Update Sub Schedule", :class => "waves-effect waves-light btn " %>
+	      	</div>  
+		<% end %> 
+	</div> 
+</div>
+<div class="section">
+	<div class="container">
+		<%= link_to "Main dashboard", admin_dashboard_path %> > 
+		<%= link_to "Manila Dashboard", manila_dashboard_path %> >  
+		<%= link_to @manilasched.duration, "/manila/schedule/#{@manilasched.slug}"%> 
+	</div>
+</div>

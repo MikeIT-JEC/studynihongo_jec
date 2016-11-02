@@ -1,0 +1,2 @@
+module CebuschedsHelper
+end

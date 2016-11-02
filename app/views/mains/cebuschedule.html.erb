@@ -1,0 +1,51 @@
+<% provide(:title, "Cebu Schedule |") %>
+<%= render "layouts/navbar_user" %>
+<div class="container">
+	
+	<% if @cebuschedule_active.count == 0 %>
+		<h4 class="red-text center">There are no active schedules yet. <%= link_to "Back", root_path %></h4>
+	<% else %>
+		<div class="divider"></div>
+			<div class="section">
+					<h6 class="grey-text">Cebu Active Schedule</h6>
+						<div class="row"> 
+							<% @cebuschedule_active.each do |cs| %> 
+								<div class="col s12 m6">
+									<div class="card blue darken-1 ">
+										<div class="card-content center white-text">
+											<p>
+												<% if @activesubsched.count > 1 %>  
+													<h5><%= link_to cs.duration.upcase, "cebu-schedules/"+cs.slug, class: "white-text" %>
+													</h5>
+													<% @activesubsched.each do |ass| %>
+														<p>
+															<%= ass.cs_day %> (<%= ass.cs_session %>) -
+															<%= ass.cs_slots %> slots
+														</p>
+													<% end %>
+												<% elsif @activesubsched.count == 1 %>
+													<h5><%= link_to cs.duration.upcase, "cebu-schedules/"+cs.slug, class: "white-text" %>
+													</h5>
+													<% @activesubsched.each do |ass| %>
+														<p>
+															<%= ass.cs_day %> (<%= ass.cs_session %>) -
+															<%= ass.cs_slots %> slots
+														</p>
+													<% end %>
+												<% else %> 
+													<h5><%= cs.duration.upcase %>
+													</h5>
+													<p>NO ACTIVE SCHEDULES YET</p>
+												<% end %>
+											</p>
+										</div>
+									</div>
+								</div>
+							<% end %>
+						</div>
+			<div class="divider"></div>
+		</div>
+	<% end %>
+	
+</div>
+<%= render "layouts/footer_user" %>

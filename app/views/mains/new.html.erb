@@ -1,0 +1,85 @@
+<% provide(:title, @cebusched.cs_day+" |") %>
+<%= render "layouts/navbar_user" %>
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col s12 m4">
+				<div class="card orange white-text">
+					<div class="card-content">
+						<h5 class="header"><%= @cebusched.cs_day%></h5>
+						<div class="divider"></div><br>
+						<p>
+							<small>Slots:</small> <%= @cebusched.cs_slots %> <br>
+				          	<small>Session:</small> <%= @cebusched.cs_session %> <br>
+				          	<small>Time:</small> <%= @cebusched.cs_time %> <br>
+				          	<small>JLPT Level:</small> <%= @cebusched.cs_jlpt_level %> <br>
+				          	<small>Class Starts:</small> <%= @cebusched.cs_starts %> <br>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m8">
+				<div class="card">
+					<div class="card-content">
+						<h5 class="blue-text center">Please provide your information here</h5>
+							<% flash.each do |name, msg| %>
+								<div class="center-align card-panel red darken-1 white-text">
+								  <%= content_tag :div, msg, :id => "flash_#{name}"%>  
+								</div>
+							<% end %>
+						<%= form_for :student, controller: "mains", action: "create" do |f| %>
+
+							<!-- hidden fields -->
+							<%= f.hidden_field(:cebu_sched_id, value: @cebusched.id)%>
+							<%= f.hidden_field(:manila_sched_id, value: "0")%>
+							<%= f.hidden_field(:status, value: "0")%>
+							<%= f.hidden_field(:datereserved, value: Time.now )%>
+							<%= f.hidden_field(:dateexpired, value: 3.days.from_now)%>
+							<!-- hidden fields -->
+
+							<div class="row">
+								<div class="input-field col s12 m4">
+									<%= f.label(:firstname, "Firstname")%>
+									<%= f.text_field(:firstname) %>
+								</div>
+								<div class="input-field col s12 m4">
+									<%= f.label(:middlename, "Middlename")%>
+									<%= f.text_field(:middlename) %>
+								</div>
+								<div class="input-field col s12 m4">
+									<%= f.label(:lastname, "Lastname")%>
+									<%= f.text_field(:lastname) %>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12 m4">
+									<%= f.label(:age, "Age")%>
+									<%= f.text_field(:age) %>
+								</div>
+								<div class="input-field col s12 m4">
+									<%= f.label(:contactnumber, "Contact Number")%>
+									<%= f.text_field(:contactnumber) %>
+								</div>
+								<div class="input-field col s12 m4">
+									<%= f.label(:emailaddress, "Email Address")%>
+									<%= f.email_field(:emailaddress) %>
+								</div>
+							</div>
+							<div class="center">
+								<%= f.radio_button :payment_scheme, "Bank", :checked => true %>
+								<%= f.label :payment_scheme_bank, "Through the Bank" %>
+								<%= f.radio_button :payment_scheme, "Counter" %>
+								<%= f.label :payment_scheme_counter, "Over the Counter" %>  
+							</div>	
+							<br><div class="divider"></div><br>
+							<p> 
+								<%= f.submit("Done", class: "waves-effect btn blue")%>
+							</p>
+						<% end %>
+					</div>
+				</div>		
+			</div>
+		</div>
+	</div>
+</div>
+<%= render "layouts/footer_user" %>

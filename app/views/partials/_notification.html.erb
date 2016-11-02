@@ -1,0 +1,9 @@
+<div class="row">
+	<div class="col s4"></div>
+	<div class="col s4"> 
+		<% flash.each do |name, msg| %>
+		  <%= content_tag :div, msg, :id => "flash_#{name}", :class => "center-align teal-text"%>
+		<% end %> 
+	</div>
+	<div class="col s4"></div>
+</div>

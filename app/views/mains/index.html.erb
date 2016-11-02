@@ -1,0 +1,148 @@
+<%= render "layouts/navbar_user" %> 
+  <div class="section no-pad-bot main-background" id="index-banner"> 
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card">  
+            <div class="card-content center-align">
+              <h5><strong>Manila Nihongo Class</strong></h5>
+              <span class="card-title"><h1 class="circle blue card-number"><strong><%= @manilasub_slots%></strong></h1></span>
+              <h5>Available Slots</h5>
+            </div>
+            <div class="card-action">
+              <center>
+              <%= link_to "Head over now!", manila_schedules_path, class: "waves-effect btn blue" %> </center>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card">  
+            <div class="card-content center-align">
+              <h5><strong>Cebu Nihongo Class</strong></h5>
+              <span class="card-title"><h1 class="circle blue card-number"><strong><%= @cebusub_slots%></strong></h1></span>
+              <h5>Available Slots</h5>
+            </div>
+            <div class="card-action"> 
+              <center>
+              <%= link_to "Head over now!", cebu_schedules_path, class: "waves-effect btn blue" %> </center>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>  
+
+  <div class="section">
+    <div class="container"> 
+      <h3 class="center-align"><strong class="red-text text-darken-4">Why you should Enroll with us?</strong></h3>
+      <div class="row valign-wrapper">  
+        <div class="col s12"> 
+          <p class="black-text"> 
+            <strong>JEC Nihongo Class</strong> is open to all levels of class from basic to advance as well as classes for all <strong>Japanese Language Proficiency Tests (JLPT) levels</strong>. A FREE Placement test is given to those who have previously studied Japanese language to assess their knowledge on the language and to guide them on the specific class they should be enrolling in.<br><br>
+           
+            <strong><a href="http://jellyfisheducation.com.ph">Jellyfish Education Consultancy (JEC) Philippines</a></strong> in coordination with Tochigi International Education Institute (TIEI) is now providing high-quality Japanese language (Nihongo) training program to all Cebuanos! Immerse yourself not only on the Japanese language but on the richness of Japan’s culture and unique practices! Start learning how to speak the language used by one of the world’s largest economies.  
+          </p>
+         <table class="centered">
+          <thead>
+            <tr>
+                <th colspan="6"><h4>OUR PARTNER SCHOOL IN JAPAN</h4></th> 
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><%= link_to image_tag("partners/TIEI Logo.png", :alt => "TIEI", :class => "responsive-img"), "http://tiei.jp/ja/" %></td>
+              <td><%= link_to image_tag("partners/human-academy.jpg", :alt => "Tokyo International School", :class => "responsive-img"), "http://hajl.athuman.com/e/" %></td>
+              <td><%= link_to image_tag("partners/tiu.png", :alt => "human academy", :class => "responsive-img"), "http://www.tiu.ac.jp/" %></td>
+              <td><%= link_to image_tag("partners/aiei.png", :alt => "aoyama", :class => "responsive-img"), "http://www.aoyama-international.com/jp-index-e.html" %></td>
+              <td><%= image_tag("partners/ajls.png", :alt => "ajls", :class => "responsive-img") %></td>
+              <td><%= link_to image_tag("partners/shinwa.jpg", :alt => "Shinwa", :class => "responsive-img"), "http://www.shinwajpn.com/" %></td> 
+            </tr>  
+          </tbody>
+        </table>
+        </div>
+      </div> 
+    </div>
+  </div> 
+
+ 
+<div class="divider"></div>
+
+
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m4">
+          <h5><strong class="blue-text text-darken-5">Recent Articles</strong></h5>
+            <% if @articles.count == 0 %>
+              <h5 class="center green-text">Nothing to show.</h5>
+            <% else %>
+              <% @articles.each do |article| %>
+                <div class="card-panel hoverable"> 
+                 <%= link_to article.title.capitalize!, "articles/"+article.slug %>
+                </div>  
+              <% end %>
+              <a class="waves-effect waves-light btn right">Read all</a>
+            <% end %>
+        </div>
+        <div class="col s12 m8">
+          <h5 class="center-align"><strong class="blue-text text-darken-5">Students and their activites (<small class="black-text">Swipe to see</small>)</strong></h5>
+
+            <div class="carousel carousel-slider">
+              <a class="carousel-item" href="#one!"><%= image_tag("http://lorempixel.com/800/400/food/1")%></a>
+              <a class="carousel-item" href="#two!"><%= image_tag("http://lorempixel.com/800/400/food/2")%></a>
+              <a class="carousel-item" href="#three!"><%= image_tag("http://lorempixel.com/800/400/food/3")%></a>
+              <a class="carousel-item" href="#four!"><%= image_tag("http://lorempixel.com/800/400/food/4")%></a>
+            </div>
+        
+        </div>
+      </div>
+    <span id="inquiry"></span> 
+    </div> 
+  </div>
+
+
+<div class="divider"></div>
+
+
+  <div class="section">
+    <div class="container">
+          <h4 class="center-align"><strong class="blue-text text-darken-5">INQUIRY</strong></h4>
+      <div class="row">
+        <div class="col s4">
+          <%= image_tag("inquiry-cartoon.jpg", :alt => "Study Nihongo", :class => "responsive-img") %> 
+        </div>
+        <div class="col s8">
+          <%= form_for @inquiry do |f| %>  
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label(:name, "Fullname")%>
+                <%= f.text_field(:name, required: true) %>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="input-field col s12">
+                <%= f.label(:email, "Email Address")%>
+                <%= f.email_field(:email, required: true) %> 
+              </div>
+            </div> 
+            <div class="row">
+              <div class="input-field col s12"> 
+                <%= f.label(:contactnumber, "Contact Number")%>
+                <%= f.text_field(:contactnumber, required: true) %>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="input-field col s12"> 
+                <%= f.label(:inquiry, "Your Inquiry")%>
+                <%= f.text_area(:inquiry, class: "materialize-textarea") %>
+              </div>
+            </div> 
+                <%= f.submit "Submit Inquiry", class: "waves-effect btn blue right" %>
+          <% end %> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%= render "layouts/footer_user" %>

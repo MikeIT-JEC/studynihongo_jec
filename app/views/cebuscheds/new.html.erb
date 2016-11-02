@@ -1,0 +1,42 @@
+<% provide(:title, "Add Cebu Schedule") %>
+<%= render "layouts/navbar_admin" %>
+<div class="container">
+	<div class="section">
+	<br>
+	   	 <h4 class="center teal-text">Add New Sched</h4>
+	      <div class="row">
+		    <div class="col s2"></div>
+		    <div class="col s8">
+
+    		<%= form_for @cebuschedule, url:{action: "create"}, html: {class: "form"} do |cs| %> 
+
+				<%= render "partials/notification" %>
+
+			      <div class="row">
+			        <div class="input-field col s12">
+			          <%= cs.hidden_field :admin_id, :value => @current_user.id %>  
+			        </div>
+			      </div>
+			      <div class="row">
+			        <div class="input-field col s12">
+			          <%= cs.label :duration, "From and to"%>
+			          <%= cs.text_field :duration, :class => "center-align" %> 
+			        </div>
+			      </div> 
+			      <div class="center">   
+					    <%= cs.radio_button :status, "0", :checked => true %>
+						<%= cs.label :status_0, "Deactivate" %>
+						<%= cs.radio_button :status, "1" %>
+						<%= cs.label :status_1, "Activate" %>  
+	              </div> 
+	              <br> 
+	              	<%= cs.submit "Create", :class => "modal-action waves-effect waves-light btn right" %> 
+			<% end %>
+
+		    </div>
+		    <div class="col s2"></div>
+		  </div> 
+	</div>
+</div>
+ 
+

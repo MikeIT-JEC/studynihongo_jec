@@ -1,0 +1,53 @@
+<% provide(:title, "Main Dashboard |") %>
+<%= render "layouts/navbar_admin" %>
+
+<% 
+  @teachers.each do |t| 
+    if t.branch == "cebu"
+      @teacher_cebu = t.name
+    else
+      @teacher_manila = t.name
+    end
+  end  
+%>
+
+
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <h3 class="center-align">Main Dashboard</h3>
+         <div class="row">
+          <div class="col s12 m6">
+            <div class="card light-blue darken-1 hoverable">
+              <div class="card-content white-text">
+                <span class="card-title center"><h1>CEBU</h1></span>
+                <p><%= material_icon.place %> 802A Keppel Center along Samar Loop cor.
+                  Cardinal Rosales Avenue, Cebu Business Park,
+                  Cebu City 6000 </p>
+                <br>
+                <p><%= material_icon.fingerprint %> <%= @teacher_cebu %></p>
+              </div>
+              <div class="card-action center">
+                <%= link_to "Go to Cebu Dashboard", cebu_dashboard_path %>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m6">
+            <div class="card light-blue darken-1 hoverable">
+              <div class="card-content white-text">
+                <span class="card-title center"><h1>MANILA</h1></span>
+                <p><%= material_icon.place %> Unit 902A Philippine Stock Exchange Center
+                    East Tower Exchange Road, Ortigas Center,
+                    Pasig City 1605  </p>
+                <br>
+                <p><%= material_icon.fingerprint %> <%= @teacher_manila %></p>
+              </div>
+              <div class="card-action center">
+                <%= link_to "Go to Manila Dashboard", manila_dashboard_path %>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div> 
+</div>

@@ -1,0 +1,27 @@
+<%= form_for(@article) do |f| %>
+
+  <% if @article.errors.any? %>
+    <div id="error_explanation">  
+        <ul class="card-panel red white-text">
+        <% @article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul> 
+    </div>
+  <% end %>
+
+  <div class="field"> 
+    <%= f.hidden_field :admin_id, :value => current_user.id %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.cktext_area :body %>
+  </div>
+  <div class="actions waves-effect btn blue">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<% provide(:title, @showcebusched.duration+" | Cebu Schedule |") %>
+<%= render "layouts/navbar_user" %>
+<div class="container">
+	 
+	<div class="divider"></div>
+		<div class="section">
+				<h6 class="grey-text"><%= link_to "Cebu Schedules", cebu_schedules_path%> > <%= @showcebusched.duration %> - <%= @activecebusubsched.count%> active schedule </h6>
+					<div class="row"> 
+						<% @activecebusubsched.each do |cs| %> 
+							<div class="col s12 m4">
+							    <h5 class="blue-text"><%= cs.cs_day %></h5>
+							    <div class="card horizontal hoverable">
+							      <div class="card-image">
+							        <img src="http://lorempixel.com/100/235/nature/6">
+							      </div>
+							      <div class="card-stacked">
+							        <div class="card-content">
+							          <p>
+							          	<small>Slots:</small> <%= cs.cs_slots %> <br>
+							          	<small>Session:</small> <%= cs.cs_session %> <br>
+							          	<small>Time:</small> <%= cs.cs_time %> <br>
+							          	<small>JLPT Level:</small> <%= cs.cs_jlpt_level %> <br>
+							          	<small>Class Starts:</small> <%= cs.cs_starts %> <br>
+							          </p>
+							        </div>
+							        <div class="card-action">
+							        	<%= link_to "Reserve now", @showcebusched.slug+"/"+cs.slug, class: "right", class: "blue-text" %> 
+							        </div>
+							      </div>
+							    </div>
+							</div>
+						<% end %>
+					</div>
+		<div class="divider"></div>
+	</div> 
+	
+</div>
+<%= render "layouts/footer_user" %>

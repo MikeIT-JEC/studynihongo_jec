@@ -1,0 +1,117 @@
+<% provide(:title, @cebusched.duration + " |") %>
+<%= render "layouts/navbar_admin" %>    
+
+	<!-- Subschedule --> 
+    	<div class="container">
+		  	<div id="sub_schedules" class="section scrollspy">
+		  		<div class="section">
+			        <h4 class="center blue-text"><%= @cebusched.duration.upcase %> <br><small class="grey-text">SCHEDULE</small></h4>
+
+					<%= render "partials/notification" %>
+			        
+			        <% if @showsubsched.count == 0 %>
+			        	<div class="center">
+			        		<h3 class="red-text center">No sub-schedules yet.</h3>
+							<a href="#add_subsched" class="waves-effect waves-light btn-large blue modal-trigger">Click here</a> 
+			        	</div>
+					<% else %>
+						<div class="row">
+						    <% @showsubsched.each do |sub| %>
+						        <div class="col s12 m6">  
+							      <% if sub.cs_status == 1 %>
+							      	<div class="collapsible-header green darken-2 white-text">
+							      <% else %>
+							      	<div class="collapsible-header red white-text">
+							      <% end %> 
+
+								    	<%= link_to sub.cs_day, {controller: "cebu_students", action: "show_cebu_students", id: sub.slug}, class: "white-text"%>
+								    	<div class="right">
+									      	<%= link_to material_icon.edit, {controller: "cebu_sub_scheds", action: "edit", id: sub.id }, class: "white-text"%>  
+								              
+									      	<%= link_to material_icon.delete, {controller: "cebu_sub_scheds", action: "destroy", id: sub.id}, :data => {confirm: "Do you want to delete this?"}, class: "white-text"%>  
+								    	</div>
+								    </div>
+						        </div> 
+						    <% end %>
+					    </div> 
+						<div class="fixed-action-btn"> 
+							<a href="#add_subsched" class="waves-effect waves-light btn-floating btn-large blue modal-trigger"><%= material_icon.add %></a>
+						</div> 
+					<% end %>
+				</div>
+		  	</div>  
+		</div> 
+	<!-- Subschedule -->   
+
+<div class="section">
+	<div class="container center">
+		<%= link_to "Main dashboard", admin_dashboard_path %> > 
+		<%= link_to "Cebu Dashboard", cebu_dashboard_path %> > 
+		<%= link_to @cebusched.duration, @cebusched.slug %> 
+	</div>
+</div>
+	
+<!-- Modal for New--> 
+  <div id="add_subsched" class="modal modal-fixed-footer">
+    <%= form_for @subschedule do |sub_sched| %> 
+	    <div class="modal-content"> <!-- start of modal content -->
+	      	<div class="row">
+	      		<div class="col s1"></div>
+	      		<div class="col s10">
+
+	      			<h4 class="center">Add Sub Schedule for <br><span class="blue-text"><%= @cebusched.duration.upcase %></span></h4> 
+
+				      <div class="row">
+				        <div class="input-field col s6"> 
+				          <%= sub_sched.hidden_field :cebu_sched_id, :value => @cebusched.id, :class => "center" %>  
+				        </div>
+				        <div class="input-field col s6">
+				          <%= sub_sched.hidden_field :admin_id, :value => current_user.id %>  
+				        </div>
+				      </div> 
+				      <div class="row">
+				        <div class="input-field col s3">
+				          <%= sub_sched.label  :cs_slots, "Slots"%>
+				          <%= sub_sched.text_field  :cs_slots, :class => "center"  %> 
+				        </div>
+				        <div class="input-field col s6">
+				          <%= sub_sched.label  :cs_day, "Days"%>
+				          <%= sub_sched.text_field  :cs_day, :class => "center"  %> 
+				        </div>
+				        <div class="input-field col s3">
+				          <%= sub_sched.label  :cs_session, "Session"%>
+				          <%= sub_sched.text_field  :cs_session, :class => "center"  %> 
+				        </div>
+				      </div>   
+				      <div class="row">
+				        <div class="input-field col s4">
+				          <%= sub_sched.label  :cs_time, "Time"%>
+				          <%= sub_sched.text_field  :cs_time, :class => "center"  %> 
+				        </div>
+				        <div class="input-field col s4">
+				          <%= sub_sched.label  :cs_starts, "Class Starts"%>
+				          <%= sub_sched.text_field  :cs_starts, :class => "center"  %> 
+				        </div>
+				        <div class="input-field col s4">
+				          <%= sub_sched.label  :cs_jlpt_level, "JLPT Level"%>
+				          <%= sub_sched.text_field :cs_jlpt_level, :class => "center"  %> 
+				        </div>
+				      </div>  
+				      <div class="center">   
+				          <%= sub_sched.label  :cs_status, "Status"%>
+						    <%= sub_sched.radio_button(:cs_status, "0", :checked => true) %>
+							<%= sub_sched.label(:cs_status_0, "Deactivate") %>
+							<%= sub_sched.radio_button(:cs_status, "1") %>
+							<%= sub_sched.label(:cs_status_1, "Activate") %>  
+		              </div> 
+	      			</div>   
+	    				 
+	      		<div class="col s1"></div> 
+	      	</div>
+    	</div><!--  End of modal content -->
+		<div class="modal-footer">
+	      <%= sub_sched.submit "Add Sub Schedule", :class => " modal-action modal-close waves-effect waves-light btn right" %> 
+	    </div>  
+	<% end %> 
+  </div>
+<!-- end of Modal for new-->

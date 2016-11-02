@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="row">
+		<div class="col s3"></div>
+		<div class="col s6">
+			<div class="center-align">
+				<h3>Update your password</h3> 
+			</div>
+			<%= form_for @admin, :url => password_reset_path(params[:id]) do |f| %>
+			  <% if @admin.errors.any? %>
+			    <div class="error_messages">
+			      <h2>Form is invalid</h2>
+			      <ul>
+			        <% for message in @admin.errors.full_messages %>
+			          <li><%= message %></li>
+			        <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+			  <div class="field">
+			    <%= f.label :password %>
+			    <%= f.password_field :password %>
+			  </div>
+			  <div class="field">
+			    <%= f.label :password_confirmation %>
+			    <%= f.password_field :password_confirmation %>
+			  </div>
+			  <div class="center"><%= f.submit "Update Password", class: "waves-effect btn blue" %></div>
+			<% end %>
+		</div>
+		<div class="col s3"></div>
+	</div>
+</div>

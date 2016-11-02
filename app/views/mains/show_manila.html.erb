@@ -1,0 +1,38 @@
+<% provide(:title, @showmanilasched.duration+" | Manila Schedule |") %>
+<%= render "layouts/navbar_user" %>
+<div class="container">
+	 
+	<div class="divider"></div>
+		<div class="section">
+				<h6 class="grey-text"><%= link_to "Manila Schedules", manila_schedules_path%> > <%= @showmanilasched.duration %> - <%= @activemanilasubsched.count%> active schedule </h6>
+					<div class="row"> 
+						<% @activemanilasubsched.each do |ms| %> 
+							<div class="col s12 m4">
+							    <h5 class="blue-text"><%= ms.ms_day %></h5>
+							    <div class="card horizontal hoverable">
+							      <div class="card-image">
+							        <img src="http://lorempixel.com/100/235/nature/6">
+							      </div>
+							      <div class="card-stacked">
+							        <div class="card-content">
+							          <p>
+							          	<small>Slots:</small> <%= ms.ms_slots %> <br>
+							          	<small>Session:</small> <%= ms.ms_session %> <br>
+							          	<small>Time:</small> <%= ms.ms_time %> <br>
+							          	<small>JLPT Level:</small> <%= ms.ms_jlpt_level %> <br>
+							          	<small>Class Starts:</small> <%= ms.ms_starts %> <br>
+							          </p>
+							        </div>
+							        <div class="card-action">
+							        	<%= link_to "Reserve now", @showmanilasched.slug+"/"+ms.slug, class: "right", class: "blue-text" %> 
+							        </div>
+							      </div>
+							    </div>
+							</div>
+						<% end %>
+					</div>
+		<div class="divider"></div>
+	</div> 
+	
+</div>
+<%= render "layouts/footer_user" %>

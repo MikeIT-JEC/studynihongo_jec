@@ -1,0 +1,101 @@
+<% provide(:title, @getsubsched.ms_day + " |") %>
+<%= render "layouts/navbar_admin" %>   
+
+<div class="container">
+	<div class="section"> 
+		<div class="card">
+			<div class="card-content">
+				<div class="row">
+					<div class="col s12 m6">
+						<div class="row center">
+							<div class="col s12 m4 green-text">
+								<h1><%= @getsubsched.ms_slots %></h1>
+								<p>Available slots</p>
+							</div>
+							<div class="col s12 m4 blue-text">
+								<h1><%= @reserved.count %></h1>
+								<p>Available slots</p>
+							</div>
+							<div class="col s12 m4 red-text">
+								<h1><%= @pendings.count %></h1>
+								<p>Available slots</p>
+							</div>
+						</div>
+					</div>
+					<div class="col s12 m6 center">
+						<h5 class="header blue-text"><%= @getsubsched.ms_day%></h5>
+						<p> 
+				          	<%= @getsubsched.ms_session %> <br>
+				          	<%= @getsubsched.ms_time %> <br>
+				          	<%= @getsubsched.ms_jlpt_level %> <br>  
+				          	<%= @getsubsched.ms_starts %> 
+						</p>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+
+	<div class="section"> 
+		
+		<%= render "partials/notification" %>
+
+		<% if @manilastudents.count == 0 %>
+			<h3 class="red-text center">No reservant's yet!</h3>
+		<% else %>
+			<table class="striped responsive-table centered">
+		        <thead class="black-text">
+		          <tr>
+		              <th data-field="name">Name</th> 
+		              <th data-field="address">Address</th>
+		              <th data-field="contactnumber">Contact Number</th>
+		              <th data-field="emailaddress">Email Address</th>
+		              <th data-field="datereserved">Payment Method</th>
+		              <th data-field="datereserved">Expired</th> 
+		              <th data-field="status">Status</th>
+		              <th data-field="action">Action</th>
+		          </tr>
+		        </thead>
+
+		        <tbody class="black-text">
+		        	<% @manilastudents.each do |ms| %>
+			          	<tr>
+				            <td><%= ms.firstname %> <%= ms.middlename %> <%= ms.lastname %></td> 
+				            <td><%= ms.address %></td> 
+				            <td><%= ms.contactnumber %></td> 
+				            <td><%= ms.emailaddress %></td> 
+				            <td><%= ms.payment_scheme %></td> 
+				            <td class="red-text"><%= ms.dateexpired.strftime("%B %d, %Y") %></td> 
+				            <td><%= ms.status %></td> 
+				            <td>
+				            	<%= link_to material_icon.autorenew, {controller: "cebu_students", action: "edit", id: ms.id}, class: "blue-text"%> 
+
+				            	<%= link_to material_icon.delete, {controller: "cebu_students", action: "destroy", id: ms.id}, :data => {confirm: "Do you want to delete this?"}, class: "red-text"%> 
+				            </td> 
+			          	</tr> 
+				    <% end %>
+		        </tbody>
+		    </table>
+		<% end %> 
+		<br>
+		<%= will_paginate @manilastudents %>
+	</div>
+	<div class="divider"></div>
+	<div class="section">
+		<div class="container center">
+			<%= link_to "Main dashboard", admin_dashboard_path %> > 
+			<%= link_to "Manila Dashboard", manila_dashboard_path %> >  
+			<%= link_to @getmanilasched.duration, "manila/schedule/"+@getmanilasched.slug %> >  
+			<%= @getsubsched.ms_day %>
+		</div>
+	</div>
+
+</div>
+
+		  <script>
+		    $(document).ready(function(){ 
+			    $('.modal-trigger').leanModal();
+    			$('ul.tabs').tabs();
+			    $('.scrollspy').scrollSpy();
+		    })
+		  </script>

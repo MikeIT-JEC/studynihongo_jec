@@ -1,0 +1,43 @@
+<div class="navbar-fixed">
+    <nav class="blue darken-4" role="navigation">
+        <div class="nav-wrapper container">
+          <%= link_to image_tag("nihongo class.png", :alt => "Study Nihongo", :class => "img-responsive"), root_path, class: "brand-logo" %>  
+
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><%= link_to "Main Dashboard", admin_dashboard_path %></li>  
+                <li><%= link_to "Inquiries", admin_inquiries_path %></li>  
+                <li><%= link_to "Articles", admin_articles_path %></li>  
+                <li><%= link_to "Teacher", admin_teachers_path %></li>  
+                <li>
+                    <a class='dropdown-button' href='#' data-beloworigin="true" data-activates='menu-dropdown'><%= material_icon.account_circle%></a>  
+
+                      <ul id='menu-dropdown' class='dropdown-content center-align blue-text'>  
+                        <li><%= link_to "Logout?", logout_path %></li>
+                      </ul>
+                </li>
+            </ul>
+
+          <ul id="slide-out" class="side-nav">
+            <li>
+                <div class="userView">
+                  <%= image_tag("bg.png", :alt => "Study Nihongo", :class => "background")  %> 
+                  <div class="center-align">
+                    <a href="#!user"><%= image_tag("joy.jpg", :alt => "Study Nihongo", :class => "circle responsive-img", :style => "margin: auto")  %></a>
+                  </div>  
+                  <a href="#!name"><span class="white-text name"><%= current_user.name %></span></a>
+                  <a href="#!email"><span class="white-text email"><%= current_user.email %></span></a>
+                </div>
+            </li>  
+            <li><%= link_to "Dashboard", admin_dashboard_path %></li> 
+            <li><%= link_to "Inquiries", admin_inquiries_path %></li>  
+            <li><%= link_to "Articles", admin_inquiries_path %></li>  
+            <li><%= link_to "Teacher", admin_teachers_path %></li>  
+            <li><%= link_to "Logout?", logout_path %></li> 
+            <li><div class="divider"></div></li>
+
+            <li><a class="subheader center-align"><small class="">Nihongo Class Reservation System </small></a></li>  
+          </ul> 
+          <a href="#" data-activates="slide-out" class="button-collapse"><%= material_icon.menu %></a>
+        </div>
+    </nav>  
+</div>

@@ -1,0 +1,47 @@
+<% provide(:title, "Manila Schedules |") %>
+<%= render "layouts/navbar_admin" %> 
+<div class="container"> 
+	<div class="section">       
+	  	<h4 class="center">SCHEDULE LIBRARY</h4>
+	  	
+	  	<%= render "partials/notification" %>
+
+	  	<% if @manilascheds.count == 0 %>
+			<h3 class="red-text center">No Schedules created yet!</h3>
+			<p class="center"><%= link_to "Create now!", manila_new_schedule_path, :class => "waves-effect waves-light btn-large blue" %></p>
+		<% else %>
+			<div class="row"> 
+				<% @manilascheds.each do |ms| %>
+				  <div class="col s12 m4">
+				  	<% if ms.status == 1 %>
+				    	<div class="card teal darken-1 center-align">  
+				  	<% else %> 
+				    	<div class="card red darken-1 center-align">  
+				  	<% end %>
+				  		<div class="card-content">
+				      	  <span class="card-title">
+					      	<%= link_to ms.duration.upcase,{controller: "manila_sub_scheds", action: "new", id: ms.slug}, :class => "white-text"%>
+					      </span> 
+					      <p class="white-text">Created: <%= time_ago_in_words(ms.created_at) %> ago</p>
+				  		</div> 
+				  		<div class="card-action">  
+					      	<%= link_to material_icon.edit, {controller: "manilascheds", action: "edit", id: ms.slug}, :class => "white-text"%> 
+					      	<%= link_to material_icon.delete, {controller: "manilascheds", action: "destroy", id: ms.id}, :data => {confirm: "Do you want to delete this?"}, :class => "white-text"%> 
+				  		</div>
+				    </div>
+				  </div> 
+				<% end %>
+			</div>
+		<% end %>
+		<div class="fixed-action-btn">
+			<%= link_to material_icon.add, manila_new_schedule_path, :class => "waves-effect waves-light btn-floating btn-large blue"%> 
+		</div>  
+	</div>
+</div>
+
+<div class="section">
+	<div class="container center">
+		<%= link_to "Main dashboard", admin_dashboard_path %> > 
+		<%= link_to "Manila Dashboard", manila_dashboard_path %>
+	</div>
+</div>

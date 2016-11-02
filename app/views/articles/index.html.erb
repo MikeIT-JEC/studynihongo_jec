@@ -1,0 +1,32 @@
+<% provide(:title, "Articles |")%>
+<%= render "layouts/navbar_admin" %> 
+<div class="container">
+  <h4 class="center">Recent Articles</h4>
+  <%= link_to 'New Article', admin_articles_new_path, class: "waves-effect green btn" %>
+
+  <% if @articles.count == 0 %>
+    <h4 class="red-text center">No Articles posted!</h4>
+  <% else %>
+    <div class="row">
+      <% @articles.each do |article| %>
+        <div class="col s12 m4">
+          <div class="card-panel blue darken-1"> 
+            <h5 class="white-text center"><%= article.title.capitalize! %></h5>
+            <p class="white-text center">Created: <%= time_ago_in_words(article.created_at)%> ago</p>
+            <div class="divider"></div>
+            <div class="center white-text">
+
+              <%= link_to 'Show',{controller: "articles", action: "show", id: article.slug }, class: "white-text" %> | 
+
+              <%= link_to 'Edit',{controller: "articles", action: "edit", id: article.slug }, class: "white-text" %> | 
+
+              <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: "white-text" %>
+                
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div> 
+  <% end %>
+
+</div>

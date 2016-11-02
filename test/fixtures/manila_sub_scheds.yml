@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  manila_sched_id: 
+  admin_id: 
+  ms_day: MyString
+  ms_session: MyString
+  ms_time: MyString
+  ms_jlpt_level: MyString
+  ms_status: 1
+  ms_slots: 1
+  ms_starts: MyString
+  slug: MyString
+
+two:
+  manila_sched_id: 
+  admin_id: 
+  ms_day: MyString
+  ms_session: MyString
+  ms_time: MyString
+  ms_jlpt_level: MyString
+  ms_status: 1
+  ms_slots: 1
+  ms_starts: MyString
+  slug: MyString

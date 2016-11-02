@@ -1,0 +1,83 @@
+<% provide(:title, "Add Teacher |") %>
+<%= render "layouts/navbar_admin" %>
+<div class="container">  
+
+	<div class="card">
+		<div class="card-content">
+
+		    <% if @teachers.errors.any? %>
+		      <div class="error_messages"> 
+		        <ul class="center">
+		          <% for message in @teachers.errors.full_messages %>
+		            <li class="red-text"><%= message %></li>
+		          <% end %>
+		        </ul>
+		      </div>
+		    <% end %>
+
+			<%= form_for @teachers, url:{action: "create"}, html: { multipart: true, class: "form" } do |f|%>
+				<div class="row">
+
+				    <div class="col s12 m4 file-field input-field">
+				      <div class="btn">
+				        <span>Upload Image</span>
+				        <input type="file">
+				      </div>
+				      <div class="file-path-wrapper">
+						<%= f.file_field :image %>
+				      </div>
+				    </div> 
+
+					<div class="col s12 m8">
+						
+						<div class="row">
+							<div class="input-field col s12">
+								<%= f.label :name %>
+								<%= f.text_field :name %>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="input-field col s12">
+								<%= f.label :age %>
+								<%= f.text_field :age %>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="input-field col s12">
+								<%= f.label :address %>
+								<%= f.text_field :address %>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="input-field col s12">
+								<%= f.label :emailaddress %>
+								<%= f.email_field :emailaddress %>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="input-field col s12">
+								<%= f.label :contact_number %>
+								<%= f.text_field :contact_number %>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="input-field col s12">
+								<%= f.label :branch %>
+								<%= f.text_field :branch %>
+							</div>
+						</div>
+
+							<%= f.submit "Create New", class: "waves-effect btn blue" %>
+
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  firstname: MyString
+  middlename: MyString
+  lastname: MyString
+  age: 1
+  contactnumber: MyString
+  emailaddress: MyString
+  datereserved: 2016-10-24 10:50:58
+  dateexpired: 2016-10-24 10:50:58
+  manila_sched_id: 1
+  payment_scheme: MyString
+
+two:
+  firstname: MyString
+  middlename: MyString
+  lastname: MyString
+  age: 1
+  contactnumber: MyString
+  emailaddress: MyString
+  datereserved: 2016-10-24 10:50:58
+  dateexpired: 2016-10-24 10:50:58
+  manila_sched_id: 1
+  payment_scheme: MyString

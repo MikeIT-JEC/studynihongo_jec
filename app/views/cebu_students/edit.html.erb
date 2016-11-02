@@ -1,0 +1,83 @@
+<% provide(:title, @getsubsched.cs_day+" |") %>
+<%= render "layouts/navbar_admin" %>
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col s12 m4">
+				<div class="card orange white-text">
+					<div class="card-content">
+						<h5 class="header"><%= @getsubsched.cs_day%></h5>
+						<div class="divider"></div><br>
+						<p>
+							<small>Slots:</small> <%= @getsubsched.cs_slots %> <br>
+				          	<small>Session:</small> <%= @getsubsched.cs_session %> <br>
+				          	<small>Time:</small> <%= @getsubsched.cs_time %> <br>
+				          	<small>JLPT Level:</small> <%= @getsubsched.cs_jlpt_level %> <br>
+				          	<small>Class Starts:</small> <%= @getsubsched.cs_starts %> <br>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m8">
+				<div class="card">
+					<div class="card-content">
+						<h5 class="blue-text center">Student's Information</h5>
+						
+						<%= render "partials/notification" %>
+						
+						<%= form_for @getstudent, url:{action: "update"}, html: {class: "form"}  do |f| %>
+
+							<!-- hidden fields -->
+							<%= f.hidden_field(:cebu_sched_id, value: @getstudent.id)%>  
+							<%= f.hidden_field(:datereserved, value:  @getstudent.datereserved )%>
+							<%= f.hidden_field(:dateexpired, value:  @getstudent.dateexpired)%>
+
+							<%= f.hidden_field(:firstname, value: @getstudent.firstname)%>  
+							<%= f.hidden_field(:middlename, value:  @getstudent.middlename )%>
+							<%= f.hidden_field(:lastname, value:  @getstudent.lastname)%>
+							<%= f.hidden_field(:age, value: @getstudent.age)%>  
+							<%= f.hidden_field(:address, value:  @getstudent.address )%>
+							<%= f.hidden_field(:emailaddress, value:  @getstudent.emailaddress)%>
+							<%= f.hidden_field(:payment_scheme, value:  @getstudent.payment_scheme)%>
+							<!-- hidden fields -->
+ 
+							<div class="row">
+								<div class="col s12">
+									<p>Name: <%= @getstudent.firstname %>
+											 <%= @getstudent.middlename %>
+											 <%= @getstudent.lastname %>
+									</p>
+									<p>Age: <%= @getstudent.age %></p>
+									<p>Contact Number: <%= @getstudent.contactnumber %></p>
+									<p>Email Address: <%= @getstudent.emailaddress %></p>
+									<p>Address: <%= @getstudent.address %></p>
+									<p>Payment Method: <%= @getstudent.payment_scheme %></p> <br>
+									<p>Status:  
+									    <%= f.radio_button :status, "0" %>
+										<%= f.label :status_0, "Pending" %>
+										<%= f.radio_button :status, "1" %>
+										<%= f.label :status_1, "Reserved" %>
+									</p>
+							</div> 
+							</div>  
+							<br><div class="divider"></div><br> 
+							<div class="row"> 
+								<div class="col s12 m4 right">
+									<%= f.submit "Update", class: "waves-effect btn blue"%> 
+								</div>
+							</div> 
+						<% end %>
+					</div>
+				</div>		
+			</div>
+		</div>
+	</div>
+</div> 
+<div class="divider"></div>
+<div class="section">
+	<div class="container center">
+		<%= link_to "Main dashboard", admin_dashboard_path %> > 
+		<%= link_to "Cebu Dashboard", cebu_dashboard_path %> >   
+		<%= link_to @getsubsched.cs_day, "/"+@getsubsched.slug %>  
+	</div>
+</div> 
