@@ -68,9 +68,9 @@
 				            <td class="red-text"><%= ms.dateexpired.strftime("%B %d, %Y") %></td> 
 				            <td><%= ms.status %></td> 
 				            <td>
-				            	<%= link_to material_icon.autorenew, {controller: "cebu_students", action: "edit", id: ms.id}, class: "blue-text"%> 
+				            	<%= link_to material_icon.autorenew, {controller: "manila_students", action: "edit", id: ms.id}, class: "blue-text"%> 
 
-				            	<%= link_to material_icon.delete, {controller: "cebu_students", action: "destroy", id: ms.id}, :data => {confirm: "Do you want to delete this?"}, class: "red-text"%> 
+				            	<%= link_to material_icon.delete, {controller: "manila_students", action: "destroy", id: ms.id}, :data => {confirm: "Do you want to delete this?"}, class: "red-text"%> 
 				            </td> 
 			          	</tr> 
 				    <% end %>

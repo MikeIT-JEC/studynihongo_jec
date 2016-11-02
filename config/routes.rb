@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   # manila students
   get 'manila-schedule/edit-student/:id' => 'manila_students#edit'    
   get         'manila-schedules/:id/:id' => 'manila_students#new'      
-  get              'manila-students/:id' => 'manila_students#show_manila_students'
+  get                              ':id' => 'manila_students#show_manila_students'
   get        'delete-manila-student/:id' => 'manila_students#destroy' 
 
   # cebu
@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   # cebu students
   get 'cebu-schedule/edit-student/:id' => 'cebu_students#edit'    
   get         'cebu-schedules/:id/:id' => 'cebu_students#new'     
-  get            'cebu-students/:id' => 'cebu_students#show_cebu_students'
+  get                            ':id' => 'cebu_students#show_cebu_students'
   get        'delete-cebu-student/:id' => 'cebu_students#destroy' 
 
   # articles admin
