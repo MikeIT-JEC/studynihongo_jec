@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get        'teachers/background/:id' => 'teacher_backgrounds#destroy'
   
   # inquiry
-  get                'admin/inquiries' => 'inquiries#index'
+  get                'admin/inquiries' => 'inquiries#show'
+  get                        'inquiry' => 'inquiries#index'
 
   # manila
   get               'manila/dashboard' => 'manilascheds#index'  

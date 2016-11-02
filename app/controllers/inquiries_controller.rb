@@ -3,6 +3,7 @@ class InquiriesController < ApplicationController
   
   def index
   	@inquiries = Inquiry.all.order(created_at: :desc)
+    @inquiry      = Inquiry.new
   end
 
   def new
@@ -15,6 +16,10 @@ class InquiriesController < ApplicationController
   	else
   		redirect_to root_path, :notice => "Inquiry sending failed."
   	end
+  end
+
+  def show
+    @inquiries = Inquiry.all.order(created_at: :desc)
   end
 
   private

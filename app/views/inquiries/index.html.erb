@@ -1,24 +1,44 @@
-<% provide(:title, "Inquiries") %>
-<%= render "layouts/navbar_admin" %>
-<div class="container"> 
-	<h4 class="blue-text center"><%= material_icon.textsms%> INQUIRIES</h4>
-		<% if @inquiries.count == 0 %>
-			<h3 class="center red-text">Don't have any inquiries yet!</h3>
-		<% else %>
-			<% @inquiries.each do |inq| %>
-			 	<ul class="collapsible popout" data-collapsible="accordion">
-				    <li class="blue lighten-1 blue-text">
-				      <div class="collapsible-header"><%= material_icon.account_circle%><%= inq.name %> 
-				      </div>
-				      <div class="collapsible-body white-text"> 
-				      	<p>	Email: <%= inq.email %><br>
-				      		Contactnumber: <%= inq.contactnumber %> <br>
-				      		... <br>
-				      		<%= inq.inquiry %>
-				    	</p>
-				      	</div>
-				    </li> 
-			  	</ul>
-			<% end %>
-		<% end %>
+<% provide(:title, "Inquiry |")%>
+<%= render "layouts/navbar_user" %> 
+
+<div class="section">
+  <div class="container">
+        <h4 class="center-align"><strong class="blue-text text-darken-5">INQUIRY</strong></h4>
+    <div class="row">
+      <div class="col s4">
+        <%= image_tag("inquiry-cartoon.jpg", :alt => "Study Nihongo", :class => "responsive-img") %> 
+      </div>
+      <div class="col s8">
+        <%= form_for @inquiry do |f| %>  
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.label(:name, "Fullname")%>
+              <%= f.text_field(:name, required: true) %>
+            </div>
+          </div> 
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.label(:email, "Email Address")%>
+              <%= f.email_field(:email, required: true) %> 
+            </div>
+          </div> 
+          <div class="row">
+            <div class="input-field col s12"> 
+              <%= f.label(:contactnumber, "Contact Number")%>
+              <%= f.text_field(:contactnumber, required: true) %>
+            </div>
+          </div> 
+          <div class="row">
+            <div class="input-field col s12"> 
+              <%= f.label(:inquiry, "Your Inquiry")%>
+              <%= f.text_area(:inquiry, class: "materialize-textarea") %>
+            </div>
+          </div> 
+              <%= f.submit "Submit Inquiry", class: "waves-effect btn blue right" %>
+        <% end %> 
+      </div>
+    </div>
+  </div>
 </div>
+
+<%= render "layouts/footer_user" %> 
