@@ -79,7 +79,7 @@
             <% else %>
               <% @articles.each do |article| %>
                 <div class="card-panel hoverable"> 
-                 <%= link_to "#{article.title.capitalize!}", "articles/"+article.slug %>
+                 <%= link_to article.title, "articles/"+article.slug %>
                 </div>  
               <% end %>
               <a class="waves-effect waves-light btn right">Read all</a>
