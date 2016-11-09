@@ -12,14 +12,14 @@
 //
 //= require jquery
 //= require rails.validations
-//= require jquery_ujs
-//= require angular
+//= require jquery_ujs  
 //= require turbolinks
 //= require materialize-sprockets  
 //= require ckeditor/init
 //= require_tree . 
 
 $(document).ready(function(){
+	$('.datepicker').datepicker();
     $(".button-collapse").sideNav({
 
       menuWidth: 300, // Default is 240

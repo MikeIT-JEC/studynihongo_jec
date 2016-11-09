@@ -58,11 +58,9 @@ class ManilaStudentsController < ApplicationController
     end 
 
     def destroy
-        @deletestudent = ManilaStudent.find(params[:id])
-        @manilasubsched = ManilaSubSched.find(@deletestudent.manila_sched_id)
+        @deletestudent = ManilaStudent.find(params[:id]) 
 
-        if @deletestudent.destroy
-          @manilasubsched.update_columns(:ms_slots => @manilasubsched.ms_slots + 1)
+        if @deletestudent.destroy 
           redirect_to :back, :notice => "Deleted Student Successfully"
         else
           redirect_to :back, :notice => "Deleting Student Failed"

@@ -14,7 +14,7 @@
       </div>
     <% end %>
 
-    <%= form_for @admin, :validate => true do |f| %>
+    <%= form_for @admin do |f| %>
       <p>
         <%= f.label :name %><br />
         <%= f.text_field :name %>
