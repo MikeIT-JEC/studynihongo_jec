@@ -26,7 +26,7 @@
 						
 						<%= render "partials/notification" %>
 						
-						<%= form_for @cebustudent do |f| %>
+						<%= form_for @cebustudent, validate: true do |f| %>
 
 							<!-- hidden fields -->
 							<%= f.hidden_field(:cebu_sched_id, value: @cebusched.id)%> 
@@ -36,29 +36,25 @@
 							<!-- hidden fields -->
  
 							<div class="row">
-								<div class="input-field col s12 m4">
+								<div class="input-field col s12 m6">
 									<%= f.label(:firstname, "Firstname")%>
 									<%= f.text_field(:firstname, required: true) %>
-								</div>
-								<div class="input-field col s12 m4">
-									<%= f.label(:middlename, "Middlename")%>
-									<%= f.text_field(:middlename) %>
-								</div>
-								<div class="input-field col s12 m4">
+								</div> 
+								<div class="input-field col s12 m6">
 									<%= f.label(:lastname, "Lastname")%>
 									<%= f.text_field(:lastname, required: true) %>
 								</div>
 							</div>
 							<div class="row">
-								<div class="input-field col s12 m4">
+								<div class="input-field col s12 m2">
 									<%= f.label(:age, "Age")%>
 									<%= f.text_field(:age, required: true) %>
 								</div>
-								<div class="input-field col s12 m4">
+								<div class="input-field col s12 m5">
 									<%= f.label(:contactnumber, "Contact Number")%>
 									<%= f.text_field(:contactnumber, required: true) %>
 								</div>
-								<div class="input-field col s12 m4">
+								<div class="input-field col s12 m5">
 									<%= f.label(:emailaddress, "Email Address")%>
 									<%= f.email_field(:emailaddress, required: true) %>
 								</div>

@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require rails.validations
 //= require jquery_ujs
 //= require angular
 //= require turbolinks
@@ -28,5 +29,5 @@ $(document).ready(function(){
     }); 
     $('.modal-trigger').leanModal(); 
     $('.scrollspy').scrollSpy();   
-    $('.tooltipped').tooltip({delay: 50});
+    $('.tooltipped').tooltip({delay: 50}); 
 })
