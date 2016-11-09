@@ -3,38 +3,39 @@ Rails.application.routes.draw do
   root 'mains#index'
 
   # gallery
-  get                  'admin/gallery' => 'gallery#index'
-  get              'admin/gallery/new' => 'gallery#new'
-  get                        'gallery' => 'mains#gallery'
+  get                    'admin/gallery' => 'gallery#index'
+  get                'admin/gallery/new' => 'gallery#new'
+  get                'admin/gallery/:id' => 'gallery#show'
+  get                          'gallery' => 'mains#gallery'
 
   # teacher
-  get                'admin/teachers'  => 'teachers#index'
-  get            'admin/teachers/new'  => 'teachers#new'
-  get        'admin/edit-teacher/:id'  => 'teachers#edit'
-  get             'admin/teachers/:id' => 'teachers#destroy'
+  get                  'admin/teachers'  => 'teachers#index'
+  get              'admin/teachers/new'  => 'teachers#new'
+  get          'admin/edit-teacher/:id'  => 'teachers#edit'
+  get               'admin/teachers/:id' => 'teachers#destroy'
 
-  get     'teachers/qualification/:id' => 'teacher_qualifications#destroy'
-  get        'teachers/background/:id' => 'teacher_backgrounds#destroy'
+  get       'teachers/qualification/:id' => 'teacher_qualifications#destroy'
+  get          'teachers/background/:id' => 'teacher_backgrounds#destroy'
 
   # sensei-preview
-  get                         'sensei' => 'senseis#index'
+  get                           'sensei' => 'senseis#index'
   
   # inquiry
-  get                'admin/inquiries' => 'inquiries#show'
-  get                        'inquiry' => 'inquiries#index'
+  get                  'admin/inquiries' => 'inquiries#show'
+  get                          'inquiry' => 'inquiries#index'
 
   # manila
-  get               'manila/dashboard' => 'manilascheds#index'  
-  get            'manila/new_schedule' => 'manilascheds#new'   
-  get       'manila/edit-schedule/:id' => 'manilascheds#edit'
-  patch   'manila/update-schedule/:id' => 'manilascheds#update'
-  get     'manila/delete-schedule/:id' => 'manilascheds#destroy'
+  get                 'manila/dashboard' => 'manilascheds#index'  
+  get              'manila/new_schedule' => 'manilascheds#new'   
+  get         'manila/edit-schedule/:id' => 'manilascheds#edit'
+  patch     'manila/update-schedule/:id' => 'manilascheds#update'
+  get       'manila/delete-schedule/:id' => 'manilascheds#destroy'
 
   # submanilasched
-  get            'manila/schedule/:id' => 'manila_sub_scheds#new'  
-  get       'manila/schedule/edit/:id' => 'manila_sub_scheds#edit'
-  get     'manila/schedule/delete/:id' => 'manila_sub_scheds#destroy' 
-  patch   'manila/schedule/update/:id' => 'manila_sub_scheds#update'
+  get              'manila/schedule/:id' => 'manila_sub_scheds#new'  
+  get         'manila/schedule/edit/:id' => 'manila_sub_scheds#edit'
+  get     '  manila/schedule/delete/:id' => 'manila_sub_scheds#destroy' 
+  patch     'manila/schedule/update/:id' => 'manila_sub_scheds#update'
 
   # manila students
   get 'manila-schedule/edit-student/:id' => 'manila_students#edit'    
@@ -43,51 +44,51 @@ Rails.application.routes.draw do
   get        'delete-manila-student/:id' => 'manila_students#destroy' 
 
   # cebu
-  get                 'cebu/dashboard' => 'cebuscheds#index'  
-  get              'cebu/new_schedule' => 'cebuscheds#new'   
-  get         'cebu/edit-schedule/:id' => 'cebuscheds#edit'
-  patch     'cebu/update-schedule/:id' => 'cebuscheds#update'
-  get       'cebu/delete-schedule/:id' => 'cebuscheds#destroy' 
+  get                   'cebu/dashboard' => 'cebuscheds#index'  
+  get                'cebu/new_schedule' => 'cebuscheds#new'   
+  get           'cebu/edit-schedule/:id' => 'cebuscheds#edit'
+  patch       'cebu/update-schedule/:id' => 'cebuscheds#update'
+  get         'cebu/delete-schedule/:id' => 'cebuscheds#destroy' 
 
   # subcebusched
-  get              'cebu/schedule/:id' => 'cebu_sub_scheds#new'  
-  get         'cebu/schedule/edit/:id' => 'cebu_sub_scheds#edit'
-  get       'cebu/schedule/delete/:id' => 'cebu_sub_scheds#destroy' 
-  patch     'cebu/schedule/update/:id' => 'cebu_sub_scheds#update'
+  get                'cebu/schedule/:id' => 'cebu_sub_scheds#new'  
+  get           'cebu/schedule/edit/:id' => 'cebu_sub_scheds#edit'
+  get         'cebu/schedule/delete/:id' => 'cebu_sub_scheds#destroy' 
+  patch       'cebu/schedule/update/:id' => 'cebu_sub_scheds#update'
 
   # cebu students
-  get         'cebu-students/edit/:id' => 'cebu_students#edit'    
-  get         'cebu-schedules/:id/:id' => 'cebu_students#new'     
-  get              'cebu-students/:id' => 'cebu_students#show_cebu_students'
-  get        'delete-cebu-student/:id' => 'cebu_students#destroy' 
+  get           'cebu-students/edit/:id' => 'cebu_students#edit'    
+  get           'cebu-schedules/:id/:id' => 'cebu_students#new'     
+  get                'cebu-students/:id' => 'cebu_students#show_cebu_students'
+  get          'delete-cebu-student/:id' => 'cebu_students#destroy' 
 
   # articles admin
-  get                'admin/articles/' => 'articles#index'
-  get             'admin/articles/new' => 'articles#new'
-  get             'admin/articles/:id' => 'articles#show'
-  get        'admin/articles/:id/edit' => 'articles#edit'
-  delete   'admin/articles/:id/delete' => 'articles#delete'
-  mount               Ckeditor::Engine => '/ckeditor'
+  get                  'admin/articles/' => 'articles#index'
+  get               'admin/articles/new' => 'articles#new'
+  get               'admin/articles/:id' => 'articles#show'
+  get          'admin/articles/:id/edit' => 'articles#edit'
+  delete     'admin/articles/:id/delete' => 'articles#delete'
+  mount                 Ckeditor::Engine => '/ckeditor'
 
   # articles main
-  get                      '/articles' => 'main_articles#index'
-  get                   'articles/:id' => 'main_articles#show'
+  get                        '/articles' => 'main_articles#index'
+  get                     'articles/:id' => 'main_articles#show'
 
   # main dashboards
-  get                'admin/dashboard' => 'dashboards#index'
+  get                  'admin/dashboard' => 'dashboards#index'
 
   # main
-  get                  'payment-terms' => 'mains#payment_terms'
-  get                 'cebu-schedules' => 'mains#cebuschedule'
-  get             'cebu-schedules/:id' => 'mains#show_cebu'
-  get               'manila-schedules' => 'mains#manilaschedule'
-  get           'manila-schedules/:id' => 'mains#show_manila'
-  get            'reservation-success' => 'mains#success'
+  get                    'payment-terms' => 'mains#payment_terms'
+  get                   'cebu-schedules' => 'mains#cebuschedule'
+  get               'cebu-schedules/:id' => 'mains#show_cebu'
+  get                 'manila-schedules' => 'mains#manilaschedule'
+  get             'manila-schedules/:id' => 'mains#show_manila'
+  get              'reservation-success' => 'mains#success'
  
   # sessions
-  get                         "logout" => "sessions#destroy"
-  get                     'ncrs/login' => 'sessions#new'
-  get                   'ncrs/sign_up' => 'admins#new'
+  get                           "logout" => "sessions#destroy"
+  get                       'ncrs/login' => 'sessions#new'
+  get                     'ncrs/sign_up' => 'admins#new'
 
   resources :sessions
   resources :admins 

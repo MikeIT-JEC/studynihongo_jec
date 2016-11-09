@@ -7,7 +7,7 @@
 
 		<%= render 'form' %>
 
-		<%= link_to 'Show', @gallery %> |
+		<%= link_to 'Show', {controller: "galleries", action: "show", id: @gallery.id } %> |
 		<%= link_to 'Back', galleries_path %>
 	</section>
 </div>
