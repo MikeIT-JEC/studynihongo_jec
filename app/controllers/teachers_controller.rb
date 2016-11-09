@@ -3,8 +3,8 @@ class TeachersController < ApplicationController
 
   def index
   	@teachers = TeacherInformation.all  
-  	@qualification = TeacherQualification.joins(:teacher_information)
-  	@background = TeacherBackground.joins(:teacher_information)
+  	@qualification = TeacherQualification.all
+  	@background = TeacherBackground.all
 
   	@teachers_qualification = TeacherQualification.new
   	@teachers_background = TeacherBackground.new

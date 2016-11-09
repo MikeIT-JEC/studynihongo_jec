@@ -39,15 +39,17 @@ class ManilaStudentsController < ApplicationController
     def update 
         @getstudent = ManilaStudent.find(params[:id])
         @manilasubsched = ManilaSubSched.find(@getstudent.manila_sched_id)
+        @teacher = TeacherInformation.where(:branch => "manila")
 
-        if @getstudent.status? 
-          if @getstudent.update_columns(:status => 0) && @manilasubsched.update_columns(:ms_slots => @cebusubsched.cs_slots + 1)
+        if @getstudent.status == 1
+          if @getstudent.update_columns(:status => 0) && @manilasubsched.update_columns(:ms_slots => @manilasubsched.ms_slots + 1)
+            UpdateReservation.manila_student(@getstudent,@manilasubsched,@teacher).deliver_now
             redirect_to :back, :notice => "Updated status successfully"
           else
             redirect_to :back, :notice => "Updating status failed"
           end
         else 
-          if @getstudent.update_columns(:status => 1) && @manilasubsched.update_columns(:ms_slots => @cebusubsched.cs_slots - 1)
+          if @getstudent.update_columns(:status => 1) && @manilasubsched.update_columns(:ms_slots => @manilasubsched.ms_slots - 1)
             redirect_to :back, :notice => "Updated status successfully"
           else
             redirect_to :back, :notice => "Updating status failed"

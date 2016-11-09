@@ -1,4 +1,4 @@
-<%= form_for(@article) do |f| %>
+<%= form_for(@article, html: { multipart: true, class: "form" }) do |f| %>
 
   <% if @article.errors.any? %>
     <div id="error_explanation">  
@@ -21,7 +21,20 @@
     <%= f.label :body %><br>
     <%= f.cktext_area :body %>
   </div>
+
+  <div class="col s12 m4 file-field input-field right">
+    <div class="btn">
+      <span>Featured Image</span>
+      <input type="file">
+    </div>
+    <div class="file-path-wrapper">
+    <%= f.file_field :image %>
+    </div>
+  </div> 
+  <br>
+  <br> 
   <div class="actions waves-effect btn blue">
     <%= f.submit %>
   </div>
+
 <% end %>

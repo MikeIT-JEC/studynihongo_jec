@@ -7,6 +7,6 @@ class MainArticlesController < ApplicationController
   def show
   	@articles = Article.friendly.find(params[:id]) 
   	@author = Admin.where(:admin_id => @articles.admin_id)
-  	@allarticles = Article.where.not(id: @articles.id).limit(3)
+  	@allarticles = Article.where.not(id: @articles.id).limit(5)
   end
 end

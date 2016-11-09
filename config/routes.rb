@@ -1,6 +1,11 @@
-Rails.application.routes.draw do     
-
+Rails.application.routes.draw do      
+ 
   root 'mains#index'
+
+  # gallery
+  get                  'admin/gallery' => 'gallery#index'
+  get              'admin/gallery/new' => 'gallery#new'
+  get                        'gallery' => 'mains#gallery'
 
   # teacher
   get                'admin/teachers'  => 'teachers#index'
@@ -10,6 +15,9 @@ Rails.application.routes.draw do
 
   get     'teachers/qualification/:id' => 'teacher_qualifications#destroy'
   get        'teachers/background/:id' => 'teacher_backgrounds#destroy'
+
+  # sensei-preview
+  get                         'sensei' => 'senseis#index'
   
   # inquiry
   get                'admin/inquiries' => 'inquiries#show'
@@ -48,7 +56,7 @@ Rails.application.routes.draw do
   patch     'cebu/schedule/update/:id' => 'cebu_sub_scheds#update'
 
   # cebu students
-  get 'cebu-schedule/edit-student/:id' => 'cebu_students#edit'    
+  get         'cebu-students/edit/:id' => 'cebu_students#edit'    
   get         'cebu-schedules/:id/:id' => 'cebu_students#new'     
   get              'cebu-students/:id' => 'cebu_students#show_cebu_students'
   get        'delete-cebu-student/:id' => 'cebu_students#destroy' 
@@ -89,9 +97,13 @@ Rails.application.routes.draw do
   resources :teachers
   resources :teacher_qualifications
   resources :teacher_backgrounds
+  resources :senseis
 
   # articles
   resources :articles
+
+  # gallery 
+  resources :galleries
 
   # cebu
   resources :cebuscheds 

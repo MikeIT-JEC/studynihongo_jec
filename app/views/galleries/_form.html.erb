@@ -1,0 +1,29 @@
+<%= form_for(@gallery, html: { multipart: true, class: "form" }) do |f| %>
+
+  <% if @gallery.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @gallery.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col s12 m4 file-field input-field right">
+    <div class="btn">
+      <span>Add Image</span>
+      <input type="file">
+    </div>
+    <div class="file-path-wrapper">
+    <%= f.file_field :image %>
+    </div>
+  </div> 
+  <div class="field">
+    <%= f.label :caption %><br>
+    <%= f.text_field :caption, required: true %>
+  </div>
+  <div class="actions">
+    <p class="waves-effect btn blue"><%= f.submit %></p>
+  </div>
+<% end %>

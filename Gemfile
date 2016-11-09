@@ -10,6 +10,7 @@ gem 'angularjs-rails'
 gem 'friendly_id', '~> 5.1.0'  
 gem 'ckeditor'
 gem 'paperclip'
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

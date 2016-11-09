@@ -1,0 +1,33 @@
+<% provide(:title, "Gallery |") %>
+<%= render "layouts/navbar_user" %>
+
+
+
+
+<div class="container">
+  <section> 
+    <div class="row">
+      <% @galleries.each do |gallery| %>
+
+        <div class="col s12 m4">
+          <div class="card">
+                <span class="blue-text" style="padding:8px;"><%= gallery.caption %></span>
+            <div class="card-image">
+              <%= image_tag gallery.image.url(:large)%> 
+            </div>  
+            <div class="card-action">
+              <%= link_to 'Edit', edit_gallery_path(gallery) %>
+              <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Do you wanna delete this?' } %>
+            </div>
+          </div>
+        </div> 
+        
+      <% end %>
+    </div>
+  </section>
+</div>
+
+  
+<div class="fixed-action-btn"> 
+  <%= link_to material_icon.add, new_gallery_path, class: "waves-effect waves-light btn-floating btn-large blue modal-trigger"%>
+</div> 

@@ -4,10 +4,11 @@
     <div class="nav-wrapper container"> 
       <%= link_to image_tag("nihongo class.png", :alt => "Study Nihongo", :class => "img-responsive"), root_path, id: "logo-container", class: "brand-logo"%>
 
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Sensei</a></li>
+      <ul class="right hide-on-med-and-down"> 
+        <li><%= link_to "Sensei", sensei_path%></li>
         <li><%= link_to "Articles", articles_path%></li>
         <li><%= link_to "Payment Terms", payment_terms_path %></li>
+        <li><%= link_to "Gallery", gallery_path %></li>
         <li><%= link_to "Inquiry", inquiry_path %></li> 
       </ul>
 

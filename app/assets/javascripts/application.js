@@ -26,8 +26,7 @@ $(document).ready(function(){
       closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
 
     }); 
-    $('.modal-trigger').leanModal();
-	$('ul.tabs').tabs();
-    $('.scrollspy').scrollSpy(); 
-    
+    $('.modal-trigger').leanModal(); 
+    $('.scrollspy').scrollSpy();   
+    $('.tooltipped').tooltip({delay: 50});
 })

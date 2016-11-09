@@ -29,7 +29,7 @@
 
 							<!-- hidden fields -->
 							<%= f.hidden_field(:cebu_sched_id, value: @getstudent.id)%>  
-							<%= f.hidden_field(:datereserved, value:  @getstudent.datereserved )%>
+							<%= f.hidden_field(:datereserved, value:  Time.now )%>
 							<%= f.hidden_field(:dateexpired, value:  @getstudent.dateexpired)%>
 
 							<%= f.hidden_field(:firstname, value: @getstudent.firstname)%>  
@@ -78,6 +78,6 @@
 	<div class="container center">
 		<%= link_to "Main dashboard", admin_dashboard_path %> > 
 		<%= link_to "Cebu Dashboard", cebu_dashboard_path %> >   
-		<%= link_to @getsubsched.cs_day, "cebu-students/"+@getsubsched.slug %>  
+		<%= link_to "back", {controller: "cebu_students", action: "show_cebu_students", id: @getsubsched.slug} %>  
 	</div>
 </div> 

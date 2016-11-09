@@ -1,0 +1,22 @@
+<% provide(:title, "Show |") %>
+<%= render "layouts/navbar_user" %>
+
+<div class="container">
+  <section> 
+    <div class="row"> 
+    	<div class="col s12 m3"></div>
+        <div class="col s12 m6">
+          <div class="card">
+              <span class="card-title" style="padding: 10px"><%= @gallery.caption %></span>
+            <div class="card-image">
+              <%= image_tag @gallery.image.url(:large)%> 
+            </div> 
+            <div class="card-action">
+              	<%= link_to 'Edit', edit_gallery_path(@gallery) %>  <%= link_to 'Back', galleries_path %>
+            </div>
+          </div>
+        </div>  
+    	<div class="col s12 m3"></div>
+    </div>
+  </section>
+</div> 

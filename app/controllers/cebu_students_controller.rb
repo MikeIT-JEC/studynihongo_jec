@@ -21,7 +21,7 @@ class CebuStudentsController < ApplicationController
     	end
     end 
   
-    def show_cebu_students    
+    def show_cebu_students   
         @getsubsched = CebuSubSched.friendly.find(params[:id])
         @getcebusched = CebuSched.find(@getsubsched.cebu_sched_id)  
         @cebustudents = CebuStudent.where(:cebu_sched_id => @getsubsched.id).page(params[:page]).per_page(3)
@@ -39,9 +39,11 @@ class CebuStudentsController < ApplicationController
     def update 
         @getstudent = CebuStudent.find(params[:id])
         @cebusubsched = CebuSubSched.find(@getstudent.cebu_sched_id)
+        @teacher = TeacherInformation.where(:branch => "cebu")
 
-        if @getstudent.status? 
+        if @getstudent.status == 1 
           if @getstudent.update_columns(:status => 0) && @cebusubsched.update_columns(:cs_slots => @cebusubsched.cs_slots + 1)
+            UpdateReservation.cebu_student(@getstudent,@cebusubsched,@teacher).deliver_now
             redirect_to :back, :notice => "Updated status successfully"
           else
             redirect_to :back, :notice => "Updating status failed"

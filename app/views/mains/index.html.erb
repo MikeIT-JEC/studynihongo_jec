@@ -73,28 +73,30 @@
     <div class="container">
       <div class="row">
         <div class="col s12 m4">
-          <h5><strong class="blue-text text-darken-5">Recent Articles</strong></h5>
+          <h5><strong class="blue-text text-darken-5">Recent Articles</strong></h5><br>
             <% if @articles.count == 0 %>
-              <h5 class="center green-text">Nothing to show.</h5>
+              <h5 class="center red-text">Nothing to show.</h5>
             <% else %>
-              <% @articles.each do |article| %>
-                <div class="card-panel hoverable"> 
-                 <%= link_to article.title, "articles/"+article.slug %>
-                </div>  
+              <% @articles.each do |article| %> 
+                <div class="row">
+                  <div class="col s2">
+                     <%= image_tag article.image.url(:small) %>
+                  </div>
+                  <div class="col s10"> 
+                     <%= link_to article.title, "articles/"+article.slug, class: "black-text" %>
+                  </div>
+                </div>
+                 <div class="divider"></div> <br>
               <% end %>
-              <a class="waves-effect waves-light btn right">Read all</a>
+              <%= link_to "Read all", articles_path, class: "right" %>
             <% end %>
         </div>
         <div class="col s12 m8">
-          <h5 class="center-align"><strong class="blue-text text-darken-5">Students and their activites (<small class="black-text">Swipe to see</small>)</strong></h5>
+          <h5 class="center-align"><strong class="text-darken-5"><%= link_to "Students and their activities", gallery_path %></strong></h5>
 
-            <div class="carousel carousel-slider">
-              <a class="carousel-item" href="#one!"><%= image_tag("http://lorempixel.com/800/400/food/1")%></a>
-              <a class="carousel-item" href="#two!"><%= image_tag("http://lorempixel.com/800/400/food/2")%></a>
-              <a class="carousel-item" href="#three!"><%= image_tag("http://lorempixel.com/800/400/food/3")%></a>
-              <a class="carousel-item" href="#four!"><%= image_tag("http://lorempixel.com/800/400/food/4")%></a>
-            </div>
-        
+              <% @galleries.each do |gallery|%>
+                <%= image_tag(gallery.image.url(:thumb))%>
+              <% end %>  
         </div>
       </div>
     <span id="inquiry"></span> 
@@ -109,10 +111,10 @@
     <div class="container">
           <h4 class="center-align"><strong class="blue-text text-darken-5">INQUIRY</strong></h4>
       <div class="row">
-        <div class="col s4">
+        <div class="col s12 m4">
           <%= image_tag("inquiry-cartoon.jpg", :alt => "Study Nihongo", :class => "responsive-img") %> 
         </div>
-        <div class="col s8">
+        <div class="col s12 m8">
           <%= form_for @inquiry do |f| %>  
             <div class="row">
               <div class="input-field col s12">

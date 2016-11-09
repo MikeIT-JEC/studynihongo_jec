@@ -1,28 +1,31 @@
 <% provide(:title, @articles.title.capitalize + " |")%>
 <%= render "layouts/navbar_user" %> 
 <div class="container"> 
-	<div class="section">
-		<h4 class="center"><%= @articles.title.capitalize %></h4> 
-		<p class="center grey-text">Created by: <%= @author.name %> - <%= time_ago_in_words(@articles.created_at) %> ago</p>
-		<div class="divider"></div> 
-		<%= raw @articles.body %>  
-	</div>
-	<div class="section">
-		<div class="divider"></div>
-	</div>
-	<div class="section">
+	<section>
 		<div class="row">
-			<div class="col s2">
-				<h5>Recent Articles</h5>
+			<div class="col s12 m8">
+				<h4 class="center"><%= @articles.title.capitalize %></h4> 
+				<p class="center grey-text">Created by: <%= @author.name %> - <%= time_ago_in_words(@articles.created_at) %> ago</p>
+				<div class="divider"></div> 
+				<%= raw @articles.body %> 
 			</div>
-			<% @allarticles.each do |allarticle|%>
-				<div class="col s3">
-					<div class="card-panel green darken-1center">
-						<%= link_to allarticle.title, "articles/"+allarticle.slug, class: "white-text" %>
-					</div>
-				</div>
-			<% end %>
-		</div> 	
-	</div>
+			<div class="col s12 m4"> 
+				<h5 class="center">Recent Articles</h5><br>
+
+				<% @allarticles.each do |allarticle|%> 
+                		<div class="row">
+                			<div class="col s3">
+		                 		<%= image_tag allarticle.image.url(:below_average) %> 
+		                 	</div>
+                			<div class="col s9">
+								<%= link_to allarticle.title, allarticle.slug%>
+                			</div>
+                		</div> 
+                 	<div class="divider"></div> <br> 
+				<% end %> 
+              	<%= link_to "Read all", articles_path, class: "waves-effect btn blue right" %>
+			</div>
+		</div>		
+	</section> 
 </div>
 <%= render "layouts/footer_user" %>
