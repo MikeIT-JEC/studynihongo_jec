@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   root 'mains#index'
 
   # gallery
-  get                    'admin/gallery' => 'gallery#index'
-  get                'admin/gallery/new' => 'gallery#new'
-  get                'admin/gallery/:id' => 'gallery#show'
+  get                    'admin/gallery' => 'galleries#index'
+  get                'admin/gallery/new' => 'galleries#new'
+  get           'admin/gallery/edit/:id' => 'galleries#edit'
+  get                'admin/gallery/:id' => 'galleries#show'
+  delete             'admin/gallery/:id' => 'galleries#destroy'
   get                          'gallery' => 'mains#gallery'
 
   # teacher

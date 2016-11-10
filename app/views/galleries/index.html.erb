@@ -13,8 +13,8 @@
               <%= image_tag gallery.image.url(:large)%> 
             </div>  
             <div class="card-action">
-              <%= link_to 'Edit', edit_gallery_path(gallery) %>
-              <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Do you wanna delete this?' } %>
+              <%= link_to 'Edit', {controller: "galleries", action: "edit", id: gallery.id } %>
+              <%= link_to 'Destroy', {controller: "galleries", action: "destroy", id: gallery.id }, method: :delete, data: { confirm: 'Do you wanna delete this?' } %>
             </div>
           </div>
         </div> 

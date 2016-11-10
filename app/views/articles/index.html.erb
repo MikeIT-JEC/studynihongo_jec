@@ -20,7 +20,7 @@
             <small class="grey-text" style="font-size: 13px">Posted: <%= time_ago_in_words(article.created_at)%> ago | 
             <%= link_to material_icon.edit,{controller: "articles", action: "edit", id: article.slug }%> | 
 
-              <%= link_to material_icon.delete, article, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to material_icon.delete,{controller: "articles", action: "destroy", id: article.slug }, method: :delete, data: { confirm: 'Are you sure?' } %>
             </small> 
           </h5>
           <p>
