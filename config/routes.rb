@@ -2,14 +2,6 @@ Rails.application.routes.draw do
  
   root 'mains#index'
 
-  # gallery
-  get                    'admin/gallery' => 'galleries#index'
-  get                'admin/gallery/new' => 'galleries#new'
-  get           'admin/gallery/edit/:id' => 'galleries#edit'
-  get                'admin/gallery/:id' => 'galleries#show'
-  delete             'admin/gallery/:id' => 'galleries#destroy'
-  get                          'gallery' => 'mains#gallery'
-
   # teacher
   get                  'admin/teachers'  => 'teachers#index'
   get              'admin/teachers/new'  => 'teachers#new'
@@ -86,6 +78,7 @@ Rails.application.routes.draw do
   get                 'manila-schedules' => 'mains#manilaschedule'
   get             'manila-schedules/:id' => 'mains#show_manila'
   get              'reservation-success' => 'mains#success'
+  get                  'student-gallery' => 'mains#gallery'
  
   # sessions
   get                           "logout" => "sessions#destroy"

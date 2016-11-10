@@ -92,7 +92,7 @@
             <% end %>
         </div>
         <div class="col s12 m8">
-          <h5 class="center-align"><strong class="text-darken-5"><%= link_to "Students and their activities", gallery_path %></strong></h5>
+          <h5 class="center-align"><strong class="text-darken-5"><%= link_to "Students and their activities", student_gallery_path %></strong></h5>
 
               <% @galleries.each do |gallery|%>
                 <%= image_tag(gallery.image.url(:thumb))%>

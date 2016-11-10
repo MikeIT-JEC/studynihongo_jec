@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108090204) do
+ActiveRecord::Schema.define(version: 20161110035240) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email"
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20161108090204) do
 
   create_table "cebu_students", force: :cascade do |t|
     t.string   "firstname"
-    t.string   "middlename"
     t.string   "lastname"
     t.integer  "age"
     t.string   "contactnumber"
@@ -151,7 +150,6 @@ ActiveRecord::Schema.define(version: 20161108090204) do
 
   create_table "manila_students", force: :cascade do |t|
     t.string   "firstname"
-    t.string   "middlename"
     t.string   "lastname"
     t.integer  "age"
     t.string   "contactnumber"

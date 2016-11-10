@@ -1,30 +1,31 @@
-<% provide(:title, "Gallery |") %>
-<%= render "layouts/navbar_admin" %>
-
-<div class="container">
-  <section> 
+<% provide(:title, "Galleries |")%>
+<%= render "layouts/navbar_admin" %> 
+<section>
+  <div class="container">
+    <h4>Galleries</h4>
+    <p id="notice"><%= notice %></p> 
     <div class="row">
       <% @galleries.each do |gallery| %>
-
         <div class="col s12 m4">
           <div class="card">
-                <span class="blue-text" style="padding:8px;"><%= gallery.caption %></span>
-            <div class="card-image">
-              <%= image_tag gallery.image.url(:large)%> 
-            </div>  
+            <span class="card-title" style="padding: 13px;"><%= gallery.caption %></span>
+            <div class="card-image"> 
+            <%= image_tag gallery.image.url(:large) %>
+            </div> 
             <div class="card-action">
-              <%= link_to 'Edit', {controller: "galleries", action: "edit", id: gallery.id } %>
-              <%= link_to 'Destroy', {controller: "galleries", action: "destroy", id: gallery.id }, method: :delete, data: { confirm: 'Do you wanna delete this?' } %>
+              <%= link_to 'Edit', edit_gallery_path(gallery) %>
+              <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
           </div>
-        </div> 
-        
+        </div>
       <% end %>
-    </div>
-  </section>
-</div>
+    </div> 
 
-  
-<div class="fixed-action-btn"> 
-  <%= link_to material_icon.add, new_gallery_path, class: "waves-effect waves-light btn-floating btn-large blue modal-trigger"%>
-</div> 
+
+    <div class="fixed-action-btn">
+      <%= link_to material_icon.add, new_gallery_path, :class => "waves-effect waves-light btn-floating btn-large blue"%> 
+    </div>  
+
+  </div>
+</section>
+    

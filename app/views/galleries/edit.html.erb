@@ -1,14 +1,29 @@
-<% provide(:title, "Edit Gallery |") %>
-<%= render "layouts/navbar_admin" %>
-		
-<div class="container">
-	<section>
-		<h1>Editing Gallery</h1>
+<% provide(:title, "Edit Image |")%>
+<%= render "layouts/navbar_admin" %> 
+<section>
+  <div class="container">
+    <h4>Editing Image</h4>
 
-		<%= render 'form' %>
+    <div class="row"> 
+        <div class="col s12">
+          <div class="card">  
+          <div class="card-content">
+          	<%= render 'form' %>
+          </div>
+            <div class="card-action">
+				<%= link_to 'Show', @gallery %>
+				<%= link_to 'Back', galleries_path %>
+            </div>
+          </div>
+        </div> 
+    </div> 
 
-		<%= link_to 'Show', {controller: "galleries", action: "show", id: @gallery.id } %> |
-		<%= link_to 'Back', admin_gallery_path %>
-	</section>
-</div>
-		
+
+    <div class="fixed-action-btn">
+      <%= link_to material_icon.add, new_gallery_path, :class => "waves-effect waves-light btn-floating btn-large blue"%> 
+    </div>  
+
+  </div>
+</section> 
+
+

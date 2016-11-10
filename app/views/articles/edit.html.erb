@@ -3,7 +3,9 @@
 
 <div class="container">
 	<h3>Edit Article</h3>
+	
 	<%= render 'form' %>
+
 	<div class="right">
 		<%= link_to 'Show',{controller: "articles", action: "show", id: @article.slug } %> |
 		<%= link_to 'Back', admin_articles_path %>
