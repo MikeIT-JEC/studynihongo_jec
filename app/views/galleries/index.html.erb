@@ -4,24 +4,27 @@
   <div class="container">
     <h4>Galleries</h4>
     <p id="notice"><%= notice %></p> 
-    <div class="row">
-      <% @galleries.each do |gallery| %>
-        <div class="col s12 m4">
-          <div class="card">
-            <span class="card-title" style="padding: 13px;"><%= gallery.caption %></span>
-            <div class="card-image"> 
-            <%= image_tag gallery.image.url(:large) %>
-            </div> 
-            <div class="card-action">
-              <%= link_to 'Edit', edit_gallery_path(gallery) %>
-              <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if @galleries.count == 0 %>
+        <h4 class="center red-text">Nothing to show image for now.</h4>
+      <% else %> 
+        <div class="row">
+          <% @galleries.each do |gallery| %>
+            <div class="col s12 m4">
+              <div class="card">
+                <span class="card-title" style="padding: 13px;"><%= gallery.caption %></span>
+                <div class="card-image"> 
+                <%= image_tag gallery.image.url(:large) %>
+                </div> 
+                <div class="card-action">
+                  <%= link_to 'Edit', edit_gallery_path(gallery) %>
+                  <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </div>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
-      <% end %>
-    </div> 
-
-
+      <% end %>  
+      
     <div class="fixed-action-btn">
       <%= link_to material_icon.add, new_gallery_path, :class => "waves-effect waves-light btn-floating btn-large blue"%> 
     </div>  
