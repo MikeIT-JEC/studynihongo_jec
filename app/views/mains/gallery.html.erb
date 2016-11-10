@@ -2,19 +2,23 @@
 <%= render "layouts/navbar_user" %>
 	<div class="container"> 
 		<h3 class="center blue-text">Nihongo Class Gallery</h3> 
-	    <div class="row">
-	      <% @galleries.each do |gallery| %>
+		<% if @galleries.count == 0 %>
+			<h4 class="center red-text">Nothing to show image for now.</h4>
+		<% else %>
+			<div class="row">
+		      <% @galleries.each do |gallery| %>
 
-	        <div class="col s12 m4">
-	          <div class="card">
-	            <div class="card-image">
-	              <%= image_tag gallery.image.url(:large)%> 
-	            </div>   
-	                <span style="padding:8px;"><%= gallery.caption %></span>
-	          </div>
-	        </div> 
-	        
-	      <% end %>
-	    </div>
+		        <div class="col s12 m4">
+		          <div class="card">
+		            <div class="card-image">
+		              <%= image_tag gallery.image.url(:large)%> 
+		            </div>   
+		                <span style="padding:8px;"><%= gallery.caption %></span>
+		          </div>
+		        </div> 
+		        
+		      <% end %>
+		    </div>
+		<% end %>
 	</div>
 <%= render "layouts/footer_user" %>
