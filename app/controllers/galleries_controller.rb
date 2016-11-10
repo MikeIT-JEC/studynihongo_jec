@@ -56,7 +56,7 @@ class GalleriesController < ApplicationController
   def destroy
     @gallery.destroy
     respond_to do |format|
-      format.html { redirect_to galleries_url, notice: 'Gallery was successfully destroyed.' }
+      format.html { redirect_to admin_gallery_url, notice: 'Gallery was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
