@@ -12,18 +12,22 @@
 			<div class="col s12 m4"> 
 				<h5 class="center">Recent Articles</h5><br>
 
-				<% @allarticles.each do |allarticle|%> 
-                		<div class="row">
-                			<div class="col s3">
-		                 		<%= image_tag allarticle.image.url(:below_average) %> 
-		                 	</div>
-                			<div class="col s9">
-								<%= link_to allarticle.title, allarticle.slug%>
-                			</div>
-                		</div> 
-                 	<div class="divider"></div> <br> 
-				<% end %> 
-              	<%= link_to "Read all", articles_path, class: "waves-effect btn blue right" %>
+					<% if @allarticles.count == 0 %>
+						<h6 class="center red-text">Seem's like only 1 article that is published.</h6>
+					<% else %>
+						<% @allarticles.each do |allarticle|%> 
+		            		<div class="row">
+		            			<div class="col s3">
+			                 		<%= image_tag allarticle.image.url(:below_average) %> 
+			                 	</div>
+		            			<div class="col s9">
+									<%= link_to allarticle.title, allarticle.slug%>
+		            			</div>
+		            		</div> 
+		                 	<div class="divider"></div> <br> 
+						<% end %> 
+						<%= link_to "See all", articles_path, class: "waves-effect btn blue right" %>
+					<% end %>
 			</div>
 		</div>		
 	</section> 
