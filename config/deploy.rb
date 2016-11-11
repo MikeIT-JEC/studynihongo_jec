@@ -4,6 +4,7 @@ lock '3.6.1'
 set :application, 'studynihongo'
 set :repo_url, 'https://github.com/MikeIT-JEC/studynihongo_jec.git'
 
+set :rbenv_path, '/home/deploy/.rbenv/'
 
 set :user, "studynihongo"
 set :stages, %w(production staging)
