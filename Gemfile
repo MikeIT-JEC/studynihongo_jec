@@ -45,6 +45,7 @@ group :development, :test do
   gem 'capistrano', '~> 3.6', '>= 3.6.1'
   gem 'capistrano-rails', '~> 1.2'
   gem 'capistrano-passenger', '~> 0.2.0'
+  gem 'highline', '~> 1.7', '>= 1.7.8'
 end
 
 group :production do
