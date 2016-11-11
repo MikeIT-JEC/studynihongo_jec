@@ -1,0 +1,30 @@
+<% provide(:title, "Payment Terms |")%>
+<%= render "layouts/navbar_admin" %> 
+<div class="container">
+  <h4 class="center">All Payment Terms</h4>
+
+  <div class="fixed-action-btn">
+    <%= link_to material_icon.add, new_payment_term_path, :class => "waves-effect waves-light btn-floating btn-large blue"%> 
+  </div>   
+  
+  <p class="center teal-text"><%= notice %></p>
+  
+  <% if @payment_terms.count == 0 %>
+    <h4 class="red-text center">No Terms added!</h4>
+  <% else %>
+    <% @payment_terms.each do |payment_term| %>
+      <div class="row"> 
+        <div class="col s12"> 
+            <%= raw payment_term.content %> 
+          <p class="right">
+            <%= link_to 'Show', payment_term %> | 
+            <%= link_to 'Edit', edit_payment_term_path(payment_term) %> |
+            <%= link_to 'Destroy', payment_term, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </p>
+        </div>
+      </div>
+      <div class="divider"></div>
+    <% end %>  
+  <% end %>
+
+</div> 

@@ -17,16 +17,3 @@
 //= require materialize-sprockets  
 //= require ckeditor/init
 //= require_tree . 
-
-$(document).ready(function(){ 
-    $(".button-collapse").sideNav({
-
-      menuWidth: 300, // Default is 240
-      edge: 'right', // Choose the horizontal origin
-      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-
-    }); 
-    $('.modal-trigger').leanModal(); 
-    $('.scrollspy').scrollSpy();   
-    $('.tooltipped').tooltip({delay: 50}); 
-})

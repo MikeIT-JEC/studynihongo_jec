@@ -9,39 +9,88 @@
 			<div class="section">
 					<h6 class="grey-text">Manila Active Schedule</h6>
 						<div class="row"> 
-							<% @manilaschedule_active.each do |ms| %> 
-								<div class="col s12 m6">
-									<div class="card blue darken-1 ">
-										<div class="card-content center white-text">
-											<p>
-												<% if @activesubsched.count > 1 %>  
-													<h5><%= link_to ms.duration.upcase, "manila-schedules/"+ms.slug, class: "white-text" %>
-													</h5>
-													<% @activesubsched.each do |ass| %>
-														<p>
-															<%= ass.ms_day %> (<%= ass.ms_session %>) -
-															<%= ass.ms_slots %> slots
-														</p>
-													<% end %>
-												<% elsif @activesubsched.count == 1 %>
-													<h5><%= link_to ms.duration.upcase, "manila-schedules/"+ms.slug, class: "white-text" %>
-													</h5>
-													<% @activesubsched.each do |ass| %>
-														<p>
-															<%= ass.ms_day %> (<%= ass.ms_session %>) -
-															<%= ass.ms_slots %> slots
-														</p>
-													<% end %>
-												<% else %> 
-													<h5><%= ms.duration.upcase %>
-													</h5>
-													<p>NO ACTIVE SCHEDULES YET</p>
-												<% end %>
-											</p>
+							<div class="col s12 m8">
+								<% @manilaschedule_active.each do |ms| %> 
+									<div class="row">
+										<div class="col s12 m6">
+											<div class="card blue darken-1 ">
+												<div class="card-content center white-text">
+													<p>
+														<% if @activesubsched.count > 1 %>  
+															<h5><%= link_to ms.duration.upcase, "manila-schedules/"+ms.slug, class: "white-text" %>
+															</h5>
+															<% @activesubsched.each do |ass| %>
+																<p>
+																	<%= ass.ms_day %> (<%= ass.ms_session %>) -
+																	<%= ass.ms_slots %> slots
+																</p>
+															<% end %>
+														<% elsif @activesubsched.count == 1 %>
+															<h5><%= link_to ms.duration.upcase, "manila-schedules/"+ms.slug, class: "white-text" %>
+															</h5>
+															<% @activesubsched.each do |ass| %>
+																<p>
+																	<%= ass.ms_day %> (<%= ass.ms_session %>) -
+																	<%= ass.ms_slots %> slots
+																</p>
+															<% end %>
+														<% else %> 
+															<h5><%= ms.duration.upcase %>
+															</h5>
+															<p>NO ACTIVE SCHEDULES YET</p>
+														<% end %>
+													</p>
+												</div>
+											</div>
 										</div>
 									</div>
-								</div>
-							<% end %>
+								<% end %>
+							</div>
+							<div class="col s12 m4">
+								
+								<div class="card">
+									<div class="card-content">
+										<div class="card-title center">SENSEI</div> 
+										<div class="divider"></div><br>
+										<% if @manila_sensei_personal_information.count == 0 %>
+											<p class="center">Will update it soon.</p>
+											<h5 class="center">STAY TUNED.</h5>
+										<% else %>
+											<% @manila_sensei_personal_information.each do |manila|%> 
+												<div class="center">
+													<%= image_tag manila.image.url(:thumb) %>
+												</div>
+												<p class="blue-text center">Basic Information</p>
+												<p> 
+													<strong>Name:</strong> 	<%= manila.name %> <br>
+													<strong>Age:</strong> 	<%= manila.age %>  <br>
+													<strong>Address:</strong> 	<%= manila.address %> <br>
+													<strong>Email Address:</strong> 	<%= manila.emailaddress %> <br>
+													<strong>Contact:</strong> 	<%= manila.contact_number %> <br> 
+												</p>  
+											<div class="divider"></div><br>
+											<p class="blue-text center">Professional Background</p>
+												<% @qualifications.each do |qualification| %>
+													<% if manila.id == qualification.teacher_information_id %>
+														<strong><%= qualification.qualification%></strong> <br>
+													<% end %>
+												<% end %>
+												<% @backgrounds.each do |background| %>
+													<% if manila.id == background.teacher_information_id %>
+														<strong><%= background.background%></strong> <br>
+													<% end %>
+												<% end %>
+												<br><div class="divider"></div><br>	
+												<p class="grey-text">
+													<strong>Location:</strong> <br>
+													<%= manila.branch_address %>
+												</p>
+											<% end %>
+										<% end %>
+									</div>
+								</div>	
+
+							</div>
 						</div>
 			<div class="divider"></div>
 		</div>

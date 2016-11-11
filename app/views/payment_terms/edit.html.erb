@@ -1,0 +1,10 @@
+<% provide(:title, "Edit Payment Term |")%>
+<%= render "layouts/navbar_admin" %> 
+<div class="container">
+	<h4>Edit Payment Term</h4>
+
+	<%= render 'form' %>
+
+	<%= link_to 'Show', @payment_term %> |
+	<%= link_to 'Back', payment_terms_path %>
+</div>  

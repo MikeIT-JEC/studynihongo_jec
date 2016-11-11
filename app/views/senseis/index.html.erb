@@ -8,42 +8,45 @@
 					<div class="card-content">
 						<div class="card-title center">CEBU SENSEI</div> 
 						<div class="divider"></div><br>
-						<% @cebu_sensei_personal_information.each do |cebu|%>
-							<div class="row">
-								<div class="col s12 m5">
-									<%= image_tag cebu.image.url(:thumb) %>
-								</div>
-								<div class="col s12 m7"> 
-									<p class="blue-text center">Basic Information</p>
-									<p> 
-										<strong>Name:</strong> 	<%= cebu.name %> <br>
-										<strong>Age:</strong> 	<%= cebu.age %>  <br>
-										<strong>Address:</strong> 	<%= cebu.address %> <br>
-										<strong>Email Address:</strong> 	<%= cebu.emailaddress %> <br>
-										<strong>Contact:</strong> 	<%= cebu.contact_number %> <br> 
-									</p>
-								</div>
-							</div> 
-						<div class="divider"></div><br>
-						<p class="blue-text center">Professional Background</p>
-							<% @qualifications.each do |qualification| %>
-								<% if cebu.id == qualification.teacher_information_id %>
-									<strong><%= qualification.qualification%></strong> <br>
+						<% if @cebu_sensei_personal_information.count == 0 %>
+							<p class="center">Will update it soon.</p>
+							<h5 class="center">STAY TUNED.</h5>
+						<% else %>
+							<% @cebu_sensei_personal_information.each do |cebu|%>
+								<div class="row">
+									<div class="col s12 m5">
+										<%= image_tag cebu.image.url(:thumb) %>
+									</div>
+									<div class="col s12 m7"> 
+										<p class="blue-text center">Basic Information</p>
+										<p> 
+											<strong>Name:</strong> 	<%= cebu.name %> <br>
+											<strong>Age:</strong> 	<%= cebu.age %>  <br>
+											<strong>Address:</strong> 	<%= cebu.address %> <br>
+											<strong>Email Address:</strong> 	<%= cebu.emailaddress %> <br>
+											<strong>Contact:</strong> 	<%= cebu.contact_number %> <br> 
+										</p>
+									</div>
+								</div> 
+							<div class="divider"></div><br>
+							<p class="blue-text center">Professional Background</p>
+								<% @qualifications.each do |qualification| %>
+									<% if cebu.id == qualification.teacher_information_id %>
+										<strong><%= qualification.qualification%></strong> <br>
+									<% end %>
 								<% end %>
-							<% end %>
-							<% @backgrounds.each do |background| %>
-								<% if cebu.id == background.teacher_information_id %>
-									<strong><%= background.background%></strong> <br>
+								<% @backgrounds.each do |background| %>
+									<% if cebu.id == background.teacher_information_id %>
+										<strong><%= background.background%></strong> <br>
+									<% end %>
 								<% end %>
+								<br><div class="divider"></div><br>	
+								<p class="grey-text">
+									<strong>Location:</strong> <br>
+										<%= cebu.branch_address %>
+								</p>
 							<% end %>
 						<% end %>
-						<br><div class="divider"></div><br>	
-						<p class="grey-text">
-							<strong>Location:</strong> <br>
-								802A Keppel Center along Samar Loop cor.
-		                  		Cardinal Rosales Avenue, Cebu Business Park,
-		                  		Cebu City 6000
-						</p>
 					</div>
 				</div>
 			</div>
@@ -52,42 +55,45 @@
 					<div class="card-content">
 						<div class="card-title center">MANILA SENSEI</div> 
 						<div class="divider"></div><br>
-						<% @manila_sensei_personal_information.each do |manila|%>
-							<div class="row">
-								<div class="col s12 m5">
-									<%= image_tag manila.image.url(:thumb) %>
-								</div>
-								<div class="col s12 m7"> 
-									<p class="blue-text center">Basic Information</p>
-									<p> 
-										<strong>Name:</strong> 	<%= manila.name %> <br>
-										<strong>Age:</strong> 	<%= manila.age %>  <br>
-										<strong>Address:</strong> 	<%= manila.address %> <br>
-										<strong>Email Address:</strong> 	<%= manila.emailaddress %> <br>
-										<strong>Contact:</strong> 	<%= manila.contact_number %> <br> 
-									</p>
-								</div>
-							</div> 
-						<div class="divider"></div><br>
-						<p class="blue-text center">Professional Background</p>
-							<% @qualifications.each do |qualification| %>
-								<% if manila.id == qualification.teacher_information_id %>
-									<strong><%= qualification.qualification%></strong> <br>
+						<% if @manila_sensei_personal_information.count == 0 %>
+							<p class="center">Will update it soon.</p>
+							<h5 class="center">STAY TUNED.</h5>
+						<% else %>
+							<% @manila_sensei_personal_information.each do |manila|%>
+								<div class="row">
+									<div class="col s12 m5">
+										<%= image_tag manila.image.url(:thumb) %>
+									</div>
+									<div class="col s12 m7"> 
+										<p class="blue-text center">Basic Information</p>
+										<p> 
+											<strong>Name:</strong> 	<%= manila.name %> <br>
+											<strong>Age:</strong> 	<%= manila.age %>  <br>
+											<strong>Address:</strong> 	<%= manila.address %> <br>
+											<strong>Email Address:</strong> 	<%= manila.emailaddress %> <br>
+											<strong>Contact:</strong> 	<%= manila.contact_number %> <br> 
+										</p>
+									</div>
+								</div> 
+							<div class="divider"></div><br>
+							<p class="blue-text center">Professional Background</p>
+								<% @qualifications.each do |qualification| %>
+									<% if manila.id == qualification.teacher_information_id %>
+										<strong><%= qualification.qualification%></strong> <br>
+									<% end %>
 								<% end %>
-							<% end %>
-							<% @backgrounds.each do |background| %>
-								<% if manila.id == background.teacher_information_id %>
-									<strong><%= background.background%></strong> <br>
+								<% @backgrounds.each do |background| %>
+									<% if manila.id == background.teacher_information_id %>
+										<strong><%= background.background%></strong> <br>
+									<% end %>
 								<% end %>
+								<br><div class="divider"></div><br>	
+								<p class="grey-text">
+									<strong>Location:</strong> <br>
+									<%= manila.branch_address %>
+								</p>
 							<% end %>
 						<% end %>
-						<br><div class="divider"></div><br>	
-						<p class="grey-text">
-							<strong>Location:</strong> <br>
-								Unit 902A Philippine Stock Exchange Center
-			                    East Tower Exchange Road, Ortigas Center,
-			                    Pasig City 1605
-						</p>
 					</div>
 				</div>
 			</div>

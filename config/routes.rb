@@ -1,5 +1,6 @@
 Rails.application.routes.draw do      
  
+  resources :payment_terms
   root 'mains#index'
 
   # teacher
@@ -72,7 +73,7 @@ Rails.application.routes.draw do
   get                  'admin/dashboard' => 'dashboards#index'
 
   # main
-  get                    'payment-terms' => 'mains#payment_terms'
+  get                'all-payment-terms' => 'mains#payment_terms'
   get                   'cebu-schedules' => 'mains#cebuschedule'
   get               'cebu-schedules/:id' => 'mains#show_cebu'
   get                 'manila-schedules' => 'mains#manilaschedule'

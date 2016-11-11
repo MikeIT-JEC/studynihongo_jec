@@ -1,6 +1,4 @@
-class InquiriesController < ApplicationController 
-  before_action :require_user 
-  
+class InquiriesController < ApplicationController  
   def index
   	@inquiries = Inquiry.all.order(created_at: :desc)
     @inquiry      = Inquiry.new

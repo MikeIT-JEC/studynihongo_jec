@@ -11,7 +11,7 @@
             </div>
             <div class="card-action">
               <center>
-              <%= link_to "Head over now!", manila_schedules_path, class: "waves-effect btn blue" %> </center>
+              <%= link_to "Reserve now!", manila_schedules_path, class: "waves-effect btn blue" %> </center>
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@
             </div>
             <div class="card-action"> 
               <center>
-              <%= link_to "Head over now!", cebu_schedules_path, class: "waves-effect btn blue" %> </center>
+              <%= link_to "Reserve now!", cebu_schedules_path, class: "waves-effect btn blue" %> </center>
             </div>
           </div>
         </div> 
@@ -64,22 +64,20 @@
       </div> 
     </div>
   </div> 
-
  
 <div class="divider"></div>
-
-
+ 
   <div class="section">
     <div class="container">
       <div class="row">
         <div class="col s12 m4">
-          <h5><strong class="blue-text text-darken-5">Recent Articles</strong></h5><br>
+          <h5><strong class="blue-text text-darken-5">Recent Articles</strong></h5>
             <% if @articles.count == 0 %>
-              <h5 class="center red-text">Nothing to show.</h5>
+              <h6 class="center red-text">Nothing to show for now.</h6>
             <% else %>
               <% @articles.each do |article| %> 
                 <div class="row">
-                  <div class="col s2">
+                  <div class="col s2"><br>
                      <%= image_tag article.image.url(:small) %>
                   </div>
                   <div class="col s10"> 
@@ -94,9 +92,13 @@
         <div class="col s12 m8">
           <h5 class="center-align"><strong class="text-darken-5"><%= link_to "Students and their activities", student_gallery_path %></strong></h5>
 
-              <% @galleries.each do |gallery|%>
-                <%= image_tag(gallery.image.url(:thumb))%>
-              <% end %>  
+            <% if @galleries.count == 0 %>
+                <h6 class="center red-text">Nothing to show for now.</h6>
+            <% else %>
+                <% @galleries.each do |gallery|%>
+                  <%= image_tag(gallery.image.url(:thumb))%>
+                <% end %>  
+            <% end %>
         </div>
       </div>
     <span id="inquiry"></span> 

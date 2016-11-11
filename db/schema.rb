@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110035240) do
+ActiveRecord::Schema.define(version: 20161111051302) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email"
@@ -182,6 +182,12 @@ ActiveRecord::Schema.define(version: 20161110035240) do
   add_index "manila_sub_scheds", ["admin_id"], name: "index_manila_sub_scheds_on_admin_id"
   add_index "manila_sub_scheds", ["manila_sched_id"], name: "index_manila_sub_scheds_on_manila_sched_id"
 
+  create_table "payment_terms", force: :cascade do |t|
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teacher_backgrounds", force: :cascade do |t|
     t.string   "background"
     t.integer  "teacher_information_id"
@@ -204,6 +210,7 @@ ActiveRecord::Schema.define(version: 20161110035240) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "branch"
+    t.string   "branch_address"
   end
 
   create_table "teacher_qualifications", force: :cascade do |t|

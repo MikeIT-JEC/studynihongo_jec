@@ -9,39 +9,88 @@
 			<div class="section">
 					<h6 class="grey-text">Cebu Active Schedule</h6>
 						<div class="row"> 
-							<% @cebuschedule_active.each do |cs| %> 
-								<div class="col s12 m6">
-									<div class="card blue darken-1 ">
-										<div class="card-content center white-text">
-											<p>
-												<% if @activesubsched.count > 1 %>  
-													<h5><%= link_to cs.duration.upcase, "cebu-schedules/"+cs.slug, class: "white-text" %>
-													</h5>
-													<% @activesubsched.each do |ass| %>
-														<p>
-															<%= ass.cs_day %> (<%= ass.cs_session %>) -
-															<%= ass.cs_slots %> slots
-														</p>
-													<% end %>
-												<% elsif @activesubsched.count == 1 %>
-													<h5><%= link_to cs.duration.upcase, "cebu-schedules/"+cs.slug, class: "white-text" %>
-													</h5>
-													<% @activesubsched.each do |ass| %>
-														<p>
-															<%= ass.cs_day %> (<%= ass.cs_session %>) -
-															<%= ass.cs_slots %> slots
-														</p>
-													<% end %>
-												<% else %> 
-													<h5><%= cs.duration.upcase %>
-													</h5>
-													<p>NO ACTIVE SCHEDULES YET</p>
-												<% end %>
-											</p>
+							<div class="col s12 m8">
+								<% @cebuschedule_active.each do |cs| %> 
+									<div class="row">
+										<div class="col s12 m6">
+											<div class="card blue darken-1 ">
+												<div class="card-content center white-text">
+													<p>
+														<% if @activesubsched.count > 1 %>  
+															<h5><%= link_to cs.duration.upcase, "cebu-schedules/"+cs.slug, class: "white-text" %>
+															</h5>
+															<% @activesubsched.each do |ass| %>
+																<p>
+																	<%= ass.cs_day %> (<%= ass.cs_session %>) -
+																	<%= ass.cs_slots %> slots
+																</p>
+															<% end %>
+														<% elsif @activesubsched.count == 1 %>
+															<h5><%= link_to cs.duration.upcase, "cebu-schedules/"+cs.slug, class: "white-text" %>
+															</h5>
+															<% @activesubsched.each do |ass| %>
+																<p>
+																	<%= ass.cs_day %> (<%= ass.cs_session %>) -
+																	<%= ass.cs_slots %> slots
+																</p>
+															<% end %>
+														<% else %> 
+															<h5><%= cs.duration.upcase %>
+															</h5>
+															<p>NO ACTIVE SCHEDULES YET</p>
+														<% end %>
+													</p>
+												</div>
+											</div>
 										</div>
 									</div>
+								<% end %>
+							</div>
+							<div class="col s12 m4">
+								
+								<div class="card">
+									<div class="card-content">
+										<div class="card-title center">SENSEI</div> 
+										<div class="divider"></div><br>
+										<% if @cebu_sensei_personal_information.count == 0 %>
+											<p class="center">Will update it soon.</p>
+											<h5 class="center">STAY TUNED.</h5>
+										<% else %>
+											<% @cebu_sensei_personal_information.each do |cebu|%> 
+												<div class="center">
+													<%= image_tag cebu.image.url(:thumb) %>
+												</div>
+												<p class="blue-text center">Basic Information</p>
+												<p> 
+													<strong>Name:</strong> 	<%= cebu.name %> <br>
+													<strong>Age:</strong> 	<%= cebu.age %>  <br>
+													<strong>Address:</strong> 	<%= cebu.address %> <br>
+													<strong>Email Address:</strong> 	<%= cebu.emailaddress %> <br>
+													<strong>Contact:</strong> 	<%= cebu.contact_number %> <br> 
+												</p>  
+											<div class="divider"></div><br>
+											<p class="blue-text center">Professional Background</p>
+												<% @qualifications.each do |qualification| %>
+													<% if cebu.id == qualification.teacher_information_id %>
+														<strong><%= qualification.qualification%></strong> <br>
+													<% end %>
+												<% end %>
+												<% @backgrounds.each do |background| %>
+													<% if cebu.id == background.teacher_information_id %>
+														<strong><%= background.background%></strong> <br>
+													<% end %>
+												<% end %>
+												<br><div class="divider"></div><br>	
+												<p class="grey-text">
+													<strong>Location:</strong> <br>
+														<%= cebu.branch_address %>
+												</p>
+											<% end %>
+										<% end %>
+									</div>
 								</div>
-							<% end %>
+
+							</div>
 						</div>
 			<div class="divider"></div>
 		</div>

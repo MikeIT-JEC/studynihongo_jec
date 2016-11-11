@@ -2,21 +2,9 @@
 <%= render "layouts/navbar_user" %>
 	<div class="container">
 		<h4 class="blue-text">Payment Terms</h4>
-		1. Students can pay through the <strong>Bank</strong> (bank details will be sent to email address after registration) or <strong>over the counter</strong> (our Office). <br><br>
-
-		2. Reservation is <strong>valid within 3 days</strong> upon online registration and should, therefore, be paid within the period of reservation. <br><br>
-
-		3. The student is given <strong>Three (3) Days</strong> from the enrollment date the freedom to <strong>cancel his/her enrollment</strong>. Within the given 3-days period the company is entitled to <strong>give a refund</strong> to the student for the amount paid during enrollment. Enrollment cancellation <strong>beyond 3-DAYS period</strong> is considered <strong>non-refundable</strong>. Thus, the Company is not obliged to give back any amount paid by the students. <br><br>
-
-		4. The Student must provide <strong>all requirements</strong> asked by the Company upon enrolling. The Student may also ask advice for the selection of class fitting to his/her knowledge on the <strong>Japanese language and availability of schedule</strong>. <br><br>
-
-		5. The Student bears costs of the <strong>tuition fee</strong> and should pay within the specified dates given by the Company at the payment breakdown list given to the Student.<br><br>
-
-		6. The Company is entitled to collect from the Student a regular tuition fee amounting to <strong>P7,500</strong> with payment terms as follows:<br>
-		Full payment: <strong>A discount</strong> amounting to P500 would be given to the Student. An amount of <strong>P7,000</strong> only would be collected by the Company from the Student.<br><br>
-
-		<strong>Installment Basis:</strong><br>
-		The <strong>P1,000 reservation fee</strong> should be paid upon signing of contract while the <strong>3,500 enrollment fee</strong> should be paid before the start of class.<br>
-		The remaining balance <strong>of P3, 000</strong> should be paid within 14 days after the class started. 
+		<% @payment_terms.each do |term| %>
+			<%= raw term.content %>
+		<% end %>
 	</div>
+<%= render "partials/check" %>
 <%= render "layouts/footer_user" %>

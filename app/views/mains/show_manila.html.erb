@@ -11,20 +11,18 @@
 							    <h5 class="blue-text"><%= ms.ms_day %></h5>
 							    <div class="card horizontal hoverable">
 							      <div class="card-image">
-							        <img src="http://lorempixel.com/100/235/nature/6">
+							         <%= image_tag("vertical-study-nihongo.jpg", :alt => "Study Nihongo", :class => "responsive-img") %> 
 							      </div>
 							      <div class="card-stacked">
-							        <div class="card-content">
-							          <p>
+							        <div class="card-content"> 
 							          	<small>Slots:</small> <%= ms.ms_slots %> <br>
 							          	<small>Session:</small> <%= ms.ms_session %> <br>
 							          	<small>Time:</small> <%= ms.ms_time %> <br>
 							          	<small>JLPT Level:</small> <%= ms.ms_jlpt_level %> <br>
-							          	<small>Class Starts:</small> <%= ms.ms_starts %> <br>
-							          </p>
+							          	<small>Class Starts:</small> <%= ms.ms_starts %> <br> 
 							        </div>
 							        <div class="card-action">
-							        	<%= link_to "Reserve now", @showmanilasched.slug+"/"+ms.slug, class: "right", class: "blue-text" %> 
+							        	<%= link_to "Reserve now", @showmanilasched.slug+"/"+ms.slug, class: "right blue-text" %> 
 							        </div>
 							      </div>
 							    </div>

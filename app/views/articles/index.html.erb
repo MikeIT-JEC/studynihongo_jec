@@ -2,7 +2,10 @@
 <%= render "layouts/navbar_admin" %> 
 <div class="container">
   <h4 class="center">Recent Articles</h4>
-  <%= link_to 'New Article', admin_articles_new_path, class: "waves-effect green btn" %>
+
+  <div class="fixed-action-btn">
+    <%= link_to material_icon.add, admin_articles_new_path, :class => "waves-effect waves-light btn-floating btn-large blue"%> 
+  </div>    
   
   <p class="center teal-text"><%= notice %></p>
   

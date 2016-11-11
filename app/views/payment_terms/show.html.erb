@@ -1,0 +1,14 @@
+<% provide(:title, "New Payment Term |")%>
+<%= render "layouts/navbar_admin" %> 
+<div class="container">
+  	<p class="center teal-text"><%= notice %></p>
+		<p>
+		  <strong>Content:</strong>
+		  <%= raw @payment_term.content %>
+		</p> 
+
+		<%= link_to 'Edit', edit_payment_term_path(@payment_term) %> |
+		<%= link_to 'Back', payment_terms_path %>
+
+</div> 
+

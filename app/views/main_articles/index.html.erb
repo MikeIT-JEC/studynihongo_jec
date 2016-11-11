@@ -2,22 +2,27 @@
  <%= render "layouts/navbar_user" %>
  <div class="container">
  	<h4 class="blue-text center">Nihongo Class - Articles</h4>  
-		<% @articles.each do |article| %> 
-			<div class="row">
-				<div class="col s12 m2 center">
-					<%= image_tag article.image.url(:average)%>
+ 		<% if @articles.count == 0 %> 
+            <h5 class="center red-text">Nothing to show for now.</h5>
+ 		<% else %>
+ 			<% @articles.each do |article| %> 
+				<div class="row">
+					<div class="col s12 m2 center">
+						<%= image_tag article.image.url(:average)%>
+					</div>
+					<div class="col s12 m10">
+				 		<h5>
+				 			<%= link_to article.title.upcase, "articles/"+article.slug, class: "black-text" %><br>
+				 			<small class="grey-text" style="font-size: 13px">Posted: <%= time_ago_in_words(article.created_at)%> ago</small> 
+				 		</h5>
+				 		<p>
+				 			<%= raw article.body[0,100] %>... <%= link_to "Read more", "articles/"+article.slug%>
+				 		</p>
+					</div>
 				</div>
-				<div class="col s12 m10">
-			 		<h5>
-			 			<%= link_to article.title.upcase, "articles/"+article.slug, class: "black-text" %><br>
-			 			<small class="grey-text" style="font-size: 13px">Posted: <%= time_ago_in_words(article.created_at)%> ago</small> 
-			 		</h5>
-			 		<p>
-			 			<%= raw article.body[0,100] %>... <%= link_to "Read more", "articles/"+article.slug%>
-			 		</p>
-				</div>
-			</div>
-	 		<div class="divider"></div>
-		<% end %> 
+		 		<div class="divider"></div>
+			<% end %> 
+ 		<% end %>
+			
  </div>
  <%= render "layouts/footer_user" %>
