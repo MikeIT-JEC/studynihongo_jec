@@ -42,6 +42,9 @@ group :development, :test do
   gem 'sqlite3' 
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'capistrano', '~> 3.6', '>= 3.6.1'
+  gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano-passenger', '~> 0.2.0'
 end
 
 group :production do

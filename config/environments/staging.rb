@@ -75,7 +75,7 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false 
+  config.active_record.dump_schema_after_migration = false
 
   ActionMailer::Base.smtp_settings = {
     address:                'smtp.sendgrid.net',
@@ -86,5 +86,9 @@ Rails.application.configure do
     authentication:         :plain,
     enable_starttls_auto:   true
   }
+
+  confi.middleware.insert_before(::Rack::Runtime, "::Rack::Auth::Basic", "Stagin") do |u, p|
+    u == ENV["STAGING_USERNAME"] && p == ENV["STAGING_PASSWORD"]
+  end
 
 end
