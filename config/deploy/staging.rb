@@ -12,7 +12,7 @@ role :web, %w{studynihongo@104.131.189.246}
 role :db, %w{studynihongo@104.131.189.246}, primary: true
 set :branch, "master"
 set :rails_env, "staging"
-set :deploy_to, "/var/www/ruby_thursday_staging"
+set :deploy_to, "/var/www/studynihongo_staging"
 
 # role-based syntax
 # ==================
