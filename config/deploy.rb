@@ -2,7 +2,7 @@
 lock '3.6.1'
 
 set :application, 'studynihongo'
-set :repo_url, 'git@github.com:MikeIT-JEC/studynihongo_jec.git'
+set :repo_url, 'https://github.com/MikeIT-JEC/studynihongo_jec.git'
 
 
 set :user, "studynihongo"
