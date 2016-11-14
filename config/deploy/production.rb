@@ -8,9 +8,9 @@
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
 
-role :app, %w{studynihongo@104.131.189.246}
-role :web, %w{studynihongo@104.131.189.246}
-role :db, %w{studynihongo@104.131.189.246}, primary: true
+role :app, %w{studynihongo@159.203.135.106}
+role :web, %w{studynihongo@159.203.135.106}
+role :db, %w{studynihongo@159.203.135.106}, primary: true
 set :branch, "production"
 set :rails_env, "production"
 set :deploy_to, "/var/www/study_nihongo_production"

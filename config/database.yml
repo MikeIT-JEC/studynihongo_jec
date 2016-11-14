@@ -23,11 +23,11 @@ test:
 staging:
   <<: *default
   database: db/studynihongo_staging.sqlite3
-  username: deploy
+  username: studynihongo
   password: <%= ENV["DATABASE_PASSWORD"] %>
 
 production:
   <<: *default
   database: db/studynihongo_production.sqlite3
-  username: deploy
+  username: studynihongo
   password: <%= ENV["DATABASE_PASSWORD"] %>

@@ -87,7 +87,7 @@ Rails.application.configure do
     enable_starttls_auto:   true
   }
 
-  confi.middleware.insert_before(::Rack::Runtime, "::Rack::Auth::Basic", "Stagin") do |u, p|
+  config.middleware.insert_before(::Rack::Runtime, "::Rack::Auth::Basic", "Stagin") do |u, p|
     u == ENV["STAGING_USERNAME"] && p == ENV["STAGING_PASSWORD"]
   end
 

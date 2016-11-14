@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20161111051302) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email"
+    t.string   "role"
     t.string   "password_hash"
     t.string   "password_salt"
     t.datetime "created_at",             null: false
@@ -44,9 +45,9 @@ ActiveRecord::Schema.define(version: 20161111051302) do
   create_table "cebu_scheds", force: :cascade do |t|
     t.integer  "admin_id"
     t.string   "duration"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "slug"
   end
 
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20161111051302) do
 
   create_table "cebu_students", force: :cascade do |t|
     t.string   "firstname"
+    t.string   "middlename"
     t.string   "lastname"
     t.integer  "age"
     t.string   "contactnumber"
@@ -77,10 +79,10 @@ ActiveRecord::Schema.define(version: 20161111051302) do
     t.string   "cs_session"
     t.string   "cs_time"
     t.string   "cs_jlpt_level"
-    t.integer  "cs_status"
+    t.integer  "cs_status",     default: 0
     t.integer  "cs_slots"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "cs_starts"
     t.string   "slug"
   end
@@ -139,17 +141,17 @@ ActiveRecord::Schema.define(version: 20161111051302) do
   create_table "manila_scheds", force: :cascade do |t|
     t.string   "duration"
     t.integer  "status"
+    t.string   "slug"
     t.integer  "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "slug"
   end
 
   add_index "manila_scheds", ["admin_id"], name: "index_manila_scheds_on_admin_id"
-  add_index "manila_scheds", ["slug"], name: "index_manila_scheds_on_slug"
 
   create_table "manila_students", force: :cascade do |t|
     t.string   "firstname"
+    t.string   "middlename"
     t.string   "lastname"
     t.integer  "age"
     t.string   "contactnumber"
@@ -158,9 +160,10 @@ ActiveRecord::Schema.define(version: 20161111051302) do
     t.datetime "dateexpired"
     t.integer  "manila_sched_id"
     t.string   "payment_scheme"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "status",          default: 0
+    t.boolean  "agreed",          default: false
     t.string   "address"
   end
 
@@ -174,9 +177,9 @@ ActiveRecord::Schema.define(version: 20161111051302) do
     t.integer  "ms_status"
     t.integer  "ms_slots"
     t.string   "ms_starts"
+    t.string   "slug"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "slug"
   end
 
   add_index "manila_sub_scheds", ["admin_id"], name: "index_manila_sub_scheds_on_admin_id"

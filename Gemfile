@@ -9,7 +9,12 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'ckeditor'
 gem 'paperclip' 
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
-gem 'client_side_validations', '~> 4.2', '>= 4.2.7'
+gem 'client_side_validations', '~> 4.2', '>= 4.2.7' 
+gem 'sqlite3'
+gem 'capistrano', '~> 3.6', '>= 3.6.1'
+gem 'capistrano-rails', '~> 1.2'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-bundler', '~> 1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6' 
@@ -38,13 +43,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do 
-  gem 'byebug' 
-  gem 'sqlite3' 
+  gem 'byebug'  
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'capistrano', '~> 3.6', '>= 3.6.1'
-  gem 'capistrano-rails', '~> 1.2'
-  gem 'capistrano-passenger', '~> 0.2.0'
   gem 'highline', '~> 1.7', '>= 1.7.8'
 end
 
